@@ -1,0 +1,69 @@
+name: 🔄 Sync `copilot` from `github/awesome-copilot`
+
+on:
+  schedule:
+    - cron: "0 0,12 * * *" # 每日 00:00 與 12:00 UTC
+  workflow_dispatch:
+
+jobs:
+  sync-awesome_copilot:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: 設定基本 Git 環境（優先處理）
+      - name: 🔧 Configure Git and environment variables
+        env:
+          GIT_TOKEN: ${{ secrets.SYNC_PAT }}
+        run: |
+          if [ -z "$GIT_TOKEN" ]; then
+            echo "❌ SYNC_PAT is missing!"
+            exit 1
+          fi
+
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          echo "✅ Git identity set"
+
+      # Step 2: Checkout 自己的 repo
+      - name: 🧾 Checkout your repo (disable GitHub token)
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false # ✅ 關閉預設 GITHUB_TOKEN 身份
+
+      # Step 3: Sparse clone Copilot 資料夾
+      - name: 🌐 Sparse clone upstream folders into copilot/
+        run: |
+          echo "📦 Cloning specific folders into copilot/..."
+
+          rm -rf copilot
+          mkdir -p copilot
+
+          git clone --depth=1 --filter=blob:none --sparse https://github.com/github/awesome-copilot.git temp-upstream
+          cd temp-upstream
+          git sparse-checkout set chatmodes instructions prompts scripts
+
+          export UPSTREAM_COMMIT=$(git rev-parse --short HEAD)
+          echo "UPSTREAM_COMMIT=${UPSTREAM_COMMIT}" >> $GITHUB_ENV
+          echo "✅ Upstream commit: ${UPSTREAM_COMMIT}"
+
+          mv chatmodes ../copilot/ || true
+          mv instructions ../copilot/ || true
+          mv prompts ../copilot/ || true
+          mv scripts ../copilot/ || true
+
+          cd ..
+          rm -rf temp-upstream
+
+      # Step 4: Commit & Push 若有變更
+      - name: 📦 Commit and push changes
+        env:
+          GIT_TOKEN: ${{ secrets.SYNC_PAT }}
+        run: |
+          git add copilot/
+          git diff --cached --quiet && echo "✅ No changes to commit." && exit 0
+
+          git commit -m "🔄 Sync copilot/ folders from github/awesome-copilot (${UPSTREAM_COMMIT}) [bot][action]"
+
+          echo "🌍 Pushing to main with SYNC_PAT..."
+          git push https://x-access-token:${GIT_TOKEN}@github.com/XD3an/awesome-ai-coding.git HEAD:main
