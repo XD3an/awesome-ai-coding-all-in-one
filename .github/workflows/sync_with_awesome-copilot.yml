@@ -66,4 +66,4 @@ jobs:
           git commit -m "🔄 Sync copilot/ folders from github/awesome-copilot (${UPSTREAM_COMMIT}) [bot][action]"
 
           echo "🌍 Pushing to main with SYNC_PAT..."
-          git push https://x-access-token:${GIT_TOKEN}@github.com/XD3an/awesome-ai-coding.git HEAD:main
+          git push https://x-access-token:${GIT_TOKEN}@github.com/XD3an/awesome-ai-coding-all-in-one.git HEAD:main

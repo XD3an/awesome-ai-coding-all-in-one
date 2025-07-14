@@ -49,4 +49,4 @@ jobs:
           git diff --cached --quiet && echo "✅ No changes to commit." && exit 0
 
           git commit -m "🔄 Sync copilot/.vscode from doggy8088/github-copilot-configs (${UPSTREAM_COMMIT}) [bot][action]"
-          git push https://x-access-token:${GIT_TOKEN}@github.com/XD3an/awesome-ai-coding.git HEAD:main
+          git push https://x-access-token:${GIT_TOKEN}@github.com/XD3an/awesome-ai-coding-all-in-one.git HEAD:main
