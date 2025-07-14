@@ -2,23 +2,6 @@
 
 A curated collection of AI-powered coding tools, configurations, and resources to enhance developer productivity. This repository automatically syncs with upstream sources like GitHub Copilot and Claude Code, providing a comprehensive set of tools for modern software development.
 
-## 📂 Contents
-
-### GitHub Copilot
-
-- **Source**: [github/awesome-copilot](https://github.com/github/awesome-copilot)
-- **Includes**:
-  - `chatmodes/` - Custom chat modes and conversation patterns
-  - `instructions/` - AI coding instructions and best practices
-  - `prompts/` - Curated prompts for various coding scenarios
-  - `scripts/` - Automation scripts and utilities
-  - `.vscode/` - VS Code configurations from [doggy8088/github-copilot-configs](https://github.com/doggy8088/github-copilot-configs)
-
-### Claude Code
-
-- **Source**: [anthropics/claude-code](https://github.com/anthropics/claude-code)
-- **Includes**: Complete repository of Claude coding examples and tools
-
 ## 🛠️ AI Coding Tools
 
 \*. **VS Code Setup**:
