@@ -58,6 +58,8 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [claude-code](https://github.com/anthropics/claude-code) - Claude coding examples
 - [github-copilot-configs](https://github.com/doggy8088/github-copilot-configs) - VS Code configurations
 
+- [agent-rules](https://github.com/steipete/agent-rules)
+
 ## 🎯 Specialized AI Development Tools
 
 ### Model Context Protocol (MCP) Servers
