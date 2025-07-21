@@ -2,7 +2,7 @@ name: 🔄 Sync `copilot/.vscode` from `doggy8088/github-copilot-configs`
 
 on:
   schedule:
-    - cron: "30 1 * * *" # 每日 01:30 UTC（台灣時間 09:30）
+    - cron: "0 0,12 * * *"
   workflow_dispatch:
 
 jobs:

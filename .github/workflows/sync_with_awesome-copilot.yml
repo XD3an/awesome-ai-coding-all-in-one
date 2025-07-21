@@ -2,7 +2,7 @@ name: 🔄 Sync `copilot` from `github/awesome-copilot`
 
 on:
   schedule:
-    - cron: "0 0,12 * * *" # 每日 00:00 與 12:00 UTC
+    - cron: "0 0,12 * * *"
   workflow_dispatch:
 
 jobs:
