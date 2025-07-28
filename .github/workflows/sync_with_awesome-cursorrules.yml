@@ -2,7 +2,7 @@ name: "🔄 Sync `cursor/rules` & `cursor/rules-new` from `PatrickJS/awesome-cur
 
 on:
   schedule:
-    - cron: "0 0, 12 * * *"
+    - cron: "0 0,12 * * *"
   workflow_dispatch:
 
 jobs:
