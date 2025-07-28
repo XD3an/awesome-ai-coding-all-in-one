@@ -95,6 +95,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x) — Master programming by recreating your favorite technologies from scratch
 - [freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp) — Open source codebase and curriculum for learning to code
 - [architect-awesome](https://github.com/XD3an/architect-awesome) — Curated list of awesome resources for software architects
+- [free-for-dev](https://github.com/ripienaar/free-for-dev) — List of free services and tools for developers
 
 ### AI Development Frameworks
 
