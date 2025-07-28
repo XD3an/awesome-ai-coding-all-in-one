@@ -1,0 +1,54 @@
+name: "🔄 Sync `cursor/rules` & `cursor/rules-new` from `PatrickJS/awesome-cursorrules`"
+
+on:
+  schedule:
+    - cron: "0 0, 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  sync-awesome-cursorrules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔧 Configure Git and environment variables
+        env:
+          GIT_TOKEN: ${{ secrets.SYNC_PAT }}
+        run: |
+          if [ -z "$GIT_TOKEN" ]; then
+            echo "❌ SYNC_PAT is missing!"
+            exit 1
+          fi
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          echo "✅ Git identity set"
+
+      - name: 🧾 Checkout your repo (disable GitHub token)
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: 🌐 Sparse clone upstream rules/rules-new into cursor/
+        run: |
+          echo "📦 Cloning rules/ and rules-new/ into cursor/..."
+          rm -rf cursor/rules cursor/rules-new
+          mkdir -p cursor
+          git clone --depth=1 --filter=blob:none --sparse https://github.com/PatrickJS/awesome-cursorrules.git temp-upstream
+          cd temp-upstream
+          git sparse-checkout set rules rules-new
+          export UPSTREAM_COMMIT=$(git rev-parse --short HEAD)
+          echo "UPSTREAM_COMMIT=${UPSTREAM_COMMIT}" >> $GITHUB_ENV
+          mv rules ../cursor/ || true
+          mv rules-new ../cursor/ || true
+          cd ..
+          rm -rf temp-upstream
+
+      - name: 📦 Commit and push changes
+        env:
+          GIT_TOKEN: ${{ secrets.SYNC_PAT }}
+        run: |
+          git add cursor/rules cursor/rules-new
+          git diff --cached --quiet && echo "✅ No changes to commit." && exit 0
+          git commit -m "🔄 Sync cursor/rules & rules-new from PatrickJS/awesome-cursorrules (${UPSTREAM_COMMIT}) [bot][action]"
+          echo "🌍 Pushing to main with SYNC_PAT..."
+          git push https://x-access-token:${GIT_TOKEN}@github.com/XD3an/awesome-ai-coding-all-in-one.git HEAD:main
