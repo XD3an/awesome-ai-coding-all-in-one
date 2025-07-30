@@ -2,17 +2,26 @@
 
 A curated collection of AI-powered coding tools, configurations, and resources to enhance developer productivity. This repository automatically syncs with upstream sources like GitHub Copilot, Claude Code, and more, providing a comprehensive set of tools for modern software development.
 
-### Copilot Resources
+### Github Copilot Resources
 
-- Copy `copilot/.vscode/` configurations to your project (VS Code settings for Copilot)
-- Browse `copilot/prompts/` for coding prompts
-- Check `copilot/instructions/` for AI coding guidelines
-- Use `copilot/scripts/` for automation
+- [awesome-copilot](https://github.com/github/awesome-copilot) — Official GitHub Copilot resources
+- [github-copilot-configs](https://github.com/doggy8088/github-copilot-configs) — VS Code configurations (for Copilot)
+
+- `copilot/.vscode/` configurations to your project (VS Code settings for Copilot)
+- `copilot/prompts/` for coding prompts
+- `copilot/instructions/` for AI coding guidelines
+- `copilot/scripts/` for automation
 
 ### Claude Code Resources
 
-- Explore `claude-code/resources/` for Claude Code workflows, slash-commands, and utilities
-- Explore `claude-code/templates/` for Claude Code templates and best practices
+- [claude-code](https://github.com/anthropics/claude-code) — Claude Code
+- [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) — Claude Code workflows, slash-commands, and templates
+- [SuperClaude_Framework](https://github.com/SuperClaude-Org/SuperClaude_Framework)
+- [Claude-Code-Remote](https://github.com/JessyTsui/Claude-Code-Remote)
+- [Claude-Code-SubAgents](https://github.com/contains-studio/agents)
+
+- `claude-code/resources/` for Claude Code workflows, slash-commands, and utilities
+- `claude-code/templates/` for Claude Code templates and best practices
 
 ## 🤖 AI-Powered IDEs & Editors
 
@@ -54,8 +63,12 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 - [awesome-copilot](https://github.com/github/awesome-copilot) — Official GitHub Copilot resources
 - [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) — Claude Code workflows, slash-commands, and templates
-- [claude-code](https://github.com/anthropics/claude-code) — Claude coding examples
-    - [Claude-Code-Remote](https://github.com/JessyTsui/Claude-Code-Remote)
+- [claude-code](https://github.com/anthropics/claude-code) — Claude Code
+
+  - [SuperClaude_Framework](https://github.com/SuperClaude-Org/SuperClaude_Framework)
+  - [Claude-Code-Remote](https://github.com/JessyTsui/Claude-Code-Remote)
+  - [Claude-Code-SubAgents](https://github.com/contains-studio/agents)
+
 - [github-copilot-configs](https://github.com/doggy8088/github-copilot-configs) — VS Code configurations (for Copilot)
 - [agent-rules](https://github.com/steipete/agent-rules)
 
