@@ -1,0 +1,61 @@
+name: "🔄 Sync agents template folders from contains-studio/agents to claude-code/sub-agents"
+
+on:
+  schedule:
+    - cron: "0 0,12 * * *"
+  workflow_dispatch:
+
+jobs:
+  sync-agents-folders:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔧 Configure Git and environment variables
+        env:
+          GIT_TOKEN: ${{ secrets.SYNC_PAT }}
+        run: |
+          if [ -z "$GIT_TOKEN" ]; then
+            echo "❌ SYNC_PAT is missing!"
+            exit 1
+          fi
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: 🧾 Checkout your repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: 🌐 Sparse clone agent folders into claude-code/sub-agents/
+        run: |
+          echo "📦 Cloning agent folders into claude-code/sub-agents/..."
+          rm -rf claude-code/sub-agents
+          mkdir -p claude-code/sub-agents
+          git clone --depth=1 --filter=blob:none --sparse https://github.com/contains-studio/agents.git temp-upstream
+          cd temp-upstream
+          git sparse-checkout set \
+            design \
+            engineering \
+            marketing \
+            product \
+            project-management \
+            studio-operations \
+            testing \
+            bonus
+          export UPSTREAM_COMMIT=$(git rev-parse --short HEAD)
+          echo "UPSTREAM_COMMIT=${UPSTREAM_COMMIT}" >> $GITHUB_ENV
+          for folder in design engineering marketing product project-management studio-operations testing bonus; do
+            cp -r $folder ../claude-code/sub-agents/ || true
+          done
+          cd ..
+          rm -rf temp-upstream
+
+      - name: 📦 Commit and push changes
+        env:
+          GIT_TOKEN: ${{ secrets.SYNC_PAT }}
+        run: |
+          git add claude-code/sub-agents
+          git diff --cached --quiet && echo "✅ No changes to commit." && exit 0
+          git commit -m "🔄 Sync agent folders from contains-studio/agents (${UPSTREAM_COMMIT}) [bot][action]"
+          git push https://x-access-token:${GIT_TOKEN}@github.com/XD3an/awesome-ai-coding-all-in-
