@@ -1,26 +1,19 @@
 <!--lint disable remark-lint:awesome-badge-->
 
-#
+<!-- Responsive Logo with Theme Support -->
+<div align="center">
+  
+  <!-- Same ASCII art for all screen sizes, just scales down on mobile -->
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/logo-dark.svg">
+    <img src="./assets/logo-light.svg" alt="Awesome Claude Code" width="100%" style="max-width: 900px;">
+  </picture>
+  
+</div>
 
-<!-- [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) -->
+<!-- Generated with https://github.com/denvercoder1/readme-typing-svg -->
 
-<pre style="display: inline-block; text-align: left;">
- █████┐ ██┐    ██┐███████┐███████┐ ██████┐ ███┐   ███┐███████┐
-██┌──██┐██│    ██│██┌────┘██┌────┘██┌───██┐████┐ ████│██┌────┘
-███████│██│ █┐ ██│█████┐  ███████┐██│   ██│██┌████┌██│█████┐
-██┌──██│██│███┐██│██┌──┘  └────██│██│   ██│██│└██┌┘██│██┌──┘
-██│  ██│└███┌███┌┘███████┐███████│└██████┌┘██│ └─┘ ██│███████┐
-└─┘  └─┘ └──┘└──┘ └──────┘└──────┘ └─────┘ └─┘     └─┘└──────┘
-
- ────────────────────────────────────────────────────────────────────────────────────
-
- ██████┐██┐      █████┐ ██┐   ██┐██████┐ ███████┐     ██████┐ ██████┐ ██████┐ ███████┐
-██┌────┘██│     ██┌──██┐██│   ██│██┌──██┐██┌────┘    ██┌────┘██┌───██┐██┌──██┐██┌────┘
-██│     ██│     ███████│██│   ██│██│  ██│█████┐      ██│     ██│   ██│██│  ██│█████┐
-██│     ██│     ██┌──██│██│   ██│██│  ██│██┌──┘      ██│     ██│   ██│██│  ██│██┌──┘
-└██████┐███████┐██│  ██│└██████┌┘██████┌┘███████┐    └██████┐└██████┌┘██████┌┘███████┐
- └─────┘└──────┘└─┘  └─┘ └─────┘ └─────┘ └──────┘     └─────┘ └─────┘ └─────┘ └──────┘
-</pre>
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&pause=1000&color=F7080D&random=true&width=435&lines=Fumigating...;Gallivanting...;Matriculating...;Toodleedoodling...;Goo-goo-g'joob-ing...;Excaliburating...;Canoodling...;Doing+the+humpty+dance...;Shiver-me-timbers-ing...;Becoming+sentient...;Opening+the+pod+bay+doors...;Rimraf-ing;23-skidoo-ing)](https://git.io/typing-svg)
 
 <!--lint enable remark-lint:awesome-badge-->
 
