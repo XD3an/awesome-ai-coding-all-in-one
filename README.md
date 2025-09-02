@@ -16,6 +16,8 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 - [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code)：Claude Code workflows, slash-commands, and templates
 
+- [claude-code-spec-workflow](https://github.com/Pimzino/claude-code-spec-workflow)
+
 #### Tools
 
 - [ccusage](https://github.com/ryoppippi/ccusage)
