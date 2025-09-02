@@ -1,19 +1,26 @@
 <!--lint disable remark-lint:awesome-badge-->
 
-<!-- Responsive Logo with Theme Support -->
-<div align="center">
-  
-  <!-- Same ASCII art for all screen sizes, just scales down on mobile -->
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/logo-dark.svg">
-    <img src="./assets/logo-light.svg" alt="Awesome Claude Code" width="100%" style="max-width: 900px;">
-  </picture>
-  
-</div>
+#
 
-<!-- Generated with https://github.com/denvercoder1/readme-typing-svg -->
+<!-- [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) -->
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&pause=1000&color=F7080D&random=true&width=435&lines=Fumigating...;Gallivanting...;Matriculating...;Toodleedoodling...;Goo-goo-g'joob-ing...;Excaliburating...;Canoodling...;Doing+the+humpty+dance...;Shiver-me-timbers-ing...;Becoming+sentient...;Opening+the+pod+bay+doors...;Rimraf-ing;23-skidoo-ing)](https://git.io/typing-svg)
+<pre style="display: inline-block; text-align: left;">
+ █████┐ ██┐    ██┐███████┐███████┐ ██████┐ ███┐   ███┐███████┐
+██┌──██┐██│    ██│██┌────┘██┌────┘██┌───██┐████┐ ████│██┌────┘
+███████│██│ █┐ ██│█████┐  ███████┐██│   ██│██┌████┌██│█████┐
+██┌──██│██│███┐██│██┌──┘  └────██│██│   ██│██│└██┌┘██│██┌──┘
+██│  ██│└███┌███┌┘███████┐███████│└██████┌┘██│ └─┘ ██│███████┐
+└─┘  └─┘ └──┘└──┘ └──────┘└──────┘ └─────┘ └─┘     └─┘└──────┘
+
+ ────────────────────────────────────────────────────────────────────────────────────
+
+ ██████┐██┐      █████┐ ██┐   ██┐██████┐ ███████┐     ██████┐ ██████┐ ██████┐ ███████┐
+██┌────┘██│     ██┌──██┐██│   ██│██┌──██┐██┌────┘    ██┌────┘██┌───██┐██┌──██┐██┌────┘
+██│     ██│     ███████│██│   ██│██│  ██│█████┐      ██│     ██│   ██│██│  ██│█████┐
+██│     ██│     ██┌──██│██│   ██│██│  ██│██┌──┘      ██│     ██│   ██│██│  ██│██┌──┘
+└██████┐███████┐██│  ██│└██████┌┘██████┌┘███████┐    └██████┐└██████┌┘██████┌┘███████┐
+ └─────┘└──────┘└─┘  └─┘ └─────┘ └─────┘ └──────┘     └─────┘ └─────┘ └─────┘ └──────┘
+</pre>
 
 <!--lint enable remark-lint:awesome-badge-->
 
@@ -29,13 +36,14 @@ This is a curated list of slash-commands, `CLAUDE.md` files, CLI tools, and othe
 
 <!--lint enable double-link-->
 
-Claude Code is a cutting-edge CLI-based coding assistant and agent released by [Anthropic](https://www.anthropic.com/) that you can access in your terminal or IDE. It is a rapidly evolving tool that offers a number of powerful capabilities, and allows for a lot of configuration, in a lot of different ways. Users are actively working out best practices and workflows. It is the hope that this repo will help the community share knowledge and understand how to get the most out of Claude Code.
+Claude Code is a cutting-edge CLI-based coding assistant and agent that you can access in your terminal or IDE. It is a rapidly evolving tool that offers a number of powerful capabilities, and allows for a lot of configuration, in a lot of different ways. Users are actively working out best practices and workflows. It is the hope that this repo will help the community share knowledge and understand how to get the most out of Claude Code.
 
 ### Announcements
 
-{{ANNOUNCEMENTS}}
+- 2025-07-26 - Anthropic done done it again, and Claude Code now has another super-power in its arsenal - custom user Sub Agents! I was thinking I might add a little section at the bottom about this "agent" thing, but then I tried it, and I think they're amazing, and probably deserve their own repo, so come and check out [awesome-claude-code-agents](https://github.com/hesreallyhim/awesome-claude-code-agents) and get those submissions rolling in. Can't wait to see what people are getting up to already with this new tech.
+- 2025-07-25 - The new-new submission workflow is up now, I've managed to make it about 4-5 times more complicated than it should be 😜 so check out [`CONTRIBUTING.md`](../CONTRIBUTING.md) if you'd like to submit a new resource.
 
-{{WEEKLY_SECTION}}
+<br>
 
 ## Contents
 
@@ -47,22 +55,18 @@ Claude Code is a cutting-edge CLI-based coding assistant and agent released by [
 
 ## Contributing 🌻
 
-### 🚀 **[Submit a new resource here!](https://github.com/hesreallyhim/awesome-claude-code/issues/new?template=submit-resource.yml)**
+Please note that this project is released with a [Contributor Code of Conduct](code-of-conduct.md). By participating in this project you agree to abide by its terms.
 
-It's easy! Just click the link above and fill out the form. No Git knowledge required - our automated system handles everything for you.
+Regarding content, we especially welcome:
 
-**We especially welcome:**
+- Proven, effective resources that follow best practices and may even be in use in production.
+- Innovative, creative, or experimental workflows that perhaps are still being iterated upon, but have high potential value, and push the boundaries of Claude Code's documented capabilities and use cases.
+- Additional libraries and tooling that are built on top of Claude Code and offer enhanced functionality.
+- Applications of Claude Code outside of the traditional "coding assistant" context, e.g., CI/CD integration, testing, documentation, dev-ops, etc.
 
-- Proven, effective resources that follow best practices and may even be in use in production
-- Innovative, creative, or experimental workflows that push the boundaries of Claude Code's capabilities
-- Additional libraries and tooling that are built on top of Claude Code
-- Applications of Claude Code outside of the traditional "coding assistant" context (CI/CD, testing, documentation, dev-ops, etc.)
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to contribute to this project. Or, fire up Claude Code and invoke the `/project:add-new-resource` command and let Claude walk you through it!
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the complete submission guide and review process.
-
-For suggestions about the repository itself, please [open a general issue](https://github.com/hesreallyhim/awesome-claude-code/issues/new).
-
-This project is released with a [Contributor Code of Conduct](code-of-conduct.md). By participating, you agree to abide by its terms.
+If you have any suggestions or thoughts on how to improve the repo, or how to best organize the list, feel free to start a Discussion topic. This is meant to be for the Claude Code community, and in general I prefer not to act on sole authority.
 
 ### A note about licenses
 
