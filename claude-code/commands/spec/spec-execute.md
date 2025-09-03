@@ -14,31 +14,7 @@ This is Phase 4 of the spec workflow. Your goal is to implement individual tasks
 
 ## Instructions
 
-**Agent-Based Execution (Recommended)**: If the `spec-task-executor` agent is available, use it for optimal task implementation:
-
-```
-Use the spec-task-executor agent to implement the specified task for the {feature-name} specification.
-
-The agent should:
-1. Load all specification context from .claude/specs/{feature-name}/
-2. Load steering documents from .claude/steering/ (if available)  
-3. Implement ONLY the specified task
-4. Follow all project conventions and leverage existing code
-5. Mark the task as complete in tasks.md
-6. Provide a completion summary
-
-Context files to load:
-- .claude/specs/{feature-name}/requirements.md
-- .claude/specs/{feature-name}/design.md
-- .claude/specs/{feature-name}/tasks.md  
-- .claude/steering/product.md (if exists)
-- .claude/steering/tech.md (if exists)
-- .claude/steering/structure.md (if exists)
-
-Task to implement: {task-id}
-```
-
-**Manual Execution (Fallback)**: If the agent is not available, follow this process:
+**Manual Task Execution Process**: Follow this systematic approach for implementing tasks:
 
 1. **Prerequisites**
    - Ensure tasks.md exists and is approved
@@ -90,61 +66,13 @@ When completing any task during `/spec-execute`:
    3. **Stop execution**: Do not proceed to next task automatically
    4. **Wait for instruction**: Let user decide next steps
 
-7. **Test Generation (if agent available)**
-During or after task implementation, use the `spec-test-generator` agent:
-
-```
-Use the spec-test-generator agent to generate tests for task {task-id} of the {feature-name} specification.
-
-The agent should:
-1. Load requirements.md for acceptance criteria
-2. Load design.md for technical details
-3. Analyze existing test patterns in the codebase
-4. Generate comprehensive test cases
-5. Provide test implementations following project conventions
-
-The generated tests ensure comprehensive coverage of the implemented functionality.
-```
-
-8. **Post-Implementation Review (if agent available)**
-After marking a task complete, use the `spec-task-implementation-reviewer` agent:
-
-```
-Use the spec-task-implementation-reviewer agent to review the implementation of task {task-id} for the {feature-name} specification.
-
-The agent should:
-1. Load all specification documents from .claude/specs/{feature-name}/
-2. Load steering documents from .claude/steering/ (if available)
-3. Review the implementation for correctness and compliance
-4. Provide structured feedback on the implementation quality
-5. Identify any issues that need to be addressed
-
-Context files to review:
-- .claude/specs/{feature-name}/requirements.md
-- .claude/specs/{feature-name}/design.md
-- .claude/specs/{feature-name}/tasks.md
-- Implementation changes for task {task-id}
-```
-
-9. **Integration Testing (if agent available)**
-After implementation review passes, use the `spec-integration-tester` agent:
-
-```
-Use the spec-integration-tester agent to test the implementation of task {task-id} for the {feature-name} specification.
-
-The agent should:
-1. Load all specification documents and understand the changes made
-2. Run relevant test suites for the implemented functionality
-3. Validate integration points and API contracts
-4. Check for regressions using git history analysis
-5. Provide comprehensive test feedback
-
-Test context:
-- Changes made in task {task-id}
-- Related test suites to execute
-- Integration points to validate
-- Git history for regression analysis
-```
+7. **Implementation Validation**
+After task completion, perform these validation steps:
+   - **Code Quality**: Ensure code follows project conventions and patterns
+   - **Requirement Compliance**: Verify implementation meets referenced requirements
+   - **Integration Testing**: Test with existing codebase components
+   - **Error Handling**: Confirm appropriate error scenarios are handled
+   - **Documentation**: Update inline comments and documentation as needed
 
 ## Critical Workflow Rules
 

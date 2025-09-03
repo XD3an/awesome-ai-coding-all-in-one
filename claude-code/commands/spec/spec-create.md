@@ -87,23 +87,14 @@ You are helping create a new feature specification through the complete workflow
 - **Include all sections**: Don't omit any required template sections
 
 ### Requirements Validation and Approval
-- **Automatic Validation (if agent available)**: FIRST use the `spec-requirements-validator` agent to validate the requirements:
-
-```
-Use the spec-requirements-validator agent to validate the requirements document for the {feature-name} specification.
-
-The agent should:
-1. Read the requirements document from .claude/specs/{feature-name}/requirements.md
-2. Validate against all quality criteria (structure, user stories, acceptance criteria, etc.)
-3. Check alignment with steering documents (product.md, tech.md, structure.md)
-4. Provide specific feedback and improvement suggestions
-5. Rate the overall quality as PASS, NEEDS_IMPROVEMENT, or MAJOR_ISSUES
-
-If validation fails, use the feedback to improve the requirements before presenting to the user.
-```
-
-- **If validation agent not available**: Review the requirements manually against template criteria first
-- **Only present to user after validation passes or improvements are made**
+- **Self-validation**: Review the requirements document against these quality criteria:
+  - All sections from requirements template are completed
+  - User stories follow "As a [role], I want [feature], so that [benefit]" format
+  - Acceptance criteria use EARS format (WHEN/IF/THEN statements)
+  - Requirements are traceable with unique IDs (REQ-X.Y)
+  - Business rules and constraints are clearly defined
+  - Integration points and dependencies are identified
+- **Codebase alignment check**: Verify requirements align with existing system capabilities
 - **Present the validated requirements document with codebase analysis summary**
 - Ask: "Do the requirements look good? If so, we can move on to the design phase."
 - **CRITICAL**: Wait for explicit approval before proceeding to Phase 2
@@ -141,24 +132,16 @@ If validation fails, use the feedback to improve the requirements before present
 - **Include Mermaid diagrams**: Add visual representations as shown in template
 
 ### Design Validation and Approval
-- **Automatic Validation (if agent available)**: FIRST use the `spec-design-validator` agent to validate the design:
-
-```
-Use the spec-design-validator agent to validate the design document for the {feature-name} specification.
-
-The agent should:
-1. Read the design document from .claude/specs/{feature-name}/design.md
-2. Read the requirements document for context
-3. Validate technical soundness, architecture quality, and completeness
-4. Check alignment with tech.md standards and structure.md conventions
-5. Verify proper leverage of existing code and integration points
-6. Rate the overall quality as PASS, NEEDS_IMPROVEMENT, or MAJOR_ISSUES
-
-If validation fails, use the feedback to improve the design before presenting to the user.
-```
-
-- **If validation agent not available**: Review the design manually against architectural best practices first
-- **Only present to user after validation passes or improvements are made**
+- **Self-validation**: Review the design document against these quality criteria:
+  - All sections from design template are completed
+  - Architecture diagrams are clear and accurate (Mermaid format)
+  - Data models are well-defined with TypeScript interfaces
+  - API design follows RESTful principles
+  - Component architecture is modular and maintainable
+  - Security and performance considerations are addressed
+  - Integration points are clearly defined
+- **Technical alignment check**: Verify design follows tech.md patterns and structure.md conventions
+- **Code reuse verification**: Ensure design leverages existing components and utilities
 - **Present the validated design document** with code reuse highlights and steering document alignment
 - Ask: "Does the design look good? If so, we can move on to the implementation planning."
 - **CRITICAL**: Wait for explicit approval before proceeding to Phase 3
@@ -202,53 +185,25 @@ If validation fails, use the feedback to improve the design before presenting to
 - **Use checkbox format**: Follow the exact task format with requirement references
 
 ### Task Validation and Approval
-- **Automatic Validation (if agent available)**: FIRST use the `spec-task-validator` agent to validate the tasks:
+- **Self-validation**: Review each task against atomicity criteria:
+  - **File Scope**: Each task touches 1-3 related files maximum
+  - **Time Boxing**: Each task completable in 15-30 minutes
+  - **Single Purpose**: Each task has one testable outcome
+  - **Specific Files**: Each task specifies exact files to create/modify
+  - **Clear Description**: Task description is under 100 characters
+  - **Requirement References**: Each task references specific requirements (REQ-X.Y)
+  - **Leverage Information**: Each task notes existing code to reuse
 
-```
-Use the spec-task-validator agent to validate the task breakdown for the {feature-name} specification.
+- **Task Dependency Analysis**: Analyze task relationships:
+  - Identify tasks that depend on others being completed first
+  - Group related tasks that can be done in parallel
+  - Determine the critical path for feature completion
+  - Ensure no circular dependencies exist
 
-The agent should:
-1. Read the tasks document from .claude/specs/{feature-name}/tasks.md
-2. Read requirements.md and design.md for context
-3. Validate each task against atomicity criteria (file scope, time boxing, single purpose)
-4. Check for agent-friendly formatting and clear specifications
-5. Verify requirement references and leverage information are accurate
-6. Rate the overall quality as PASS, NEEDS_IMPROVEMENT, or MAJOR_ISSUES
-
-If validation fails, use the feedback to break down tasks further and improve atomicity before presenting to the user.
-```
-
-- **If validation agent not available**: Self-validate each task against atomic criteria first:
-  - Does each task specify exact files to modify/create?
-  - Can each task be completed in 15-30 minutes?
-  - Does each task have a single, testable outcome?
-  - Are any tasks still too broad (>100 characters description)?
-- **If validation fails**: Break down broad tasks further before presenting
-- **Only present to user after validation passes or improvements are made**
-
-### Task Dependency Analysis
-- **Automatic Analysis (if agent available)**: AFTER validation passes, use the `spec-dependency-analyzer` agent:
-
-```
-Use the spec-dependency-analyzer agent to analyze task dependencies for the {feature-name} specification.
-
-The agent should:
-1. Read the tasks document from .claude/specs/{feature-name}/tasks.md
-2. Analyze explicit and implicit dependencies between tasks
-3. Identify parallelization opportunities
-4. Calculate the critical path
-5. Suggest optimal execution order
-6. Warn about any circular dependencies or issues
-
-The analysis will help optimize task execution strategy.
-```
-
-- **Present the validated task list with dependency analysis** (if available)
+- **Present the validated task list with dependency analysis**
 - Ask: "Do the tasks look good? Each task should be atomic and agent-friendly."
 - **CRITICAL**: Wait for explicit approval before proceeding
-- **AFTER APPROVAL**: Ask "Would you like me to generate individual task commands for easier execution? (yes/no)"
-- **IF YES**: Execute `npx @pimzino/claude-code-spec-workflow@latest generate-task-commands {feature-name}`
-- **IF NO**: Continue with traditional task execution approach
+- **AFTER APPROVAL**: Tasks are ready for implementation using `/spec-execute`
 
 ## Critical Workflow Rules
 
@@ -272,11 +227,11 @@ The analysis will help optimize task execution strategy.
 - **Tasks**: Must follow `.claude/templates/tasks-template.md` structure exactly
 - **Include all template sections** - do not omit any required sections
 
-### Task Command Generation
-- **ONLY** ask about task command generation AFTER tasks.md is approved
-- **Use NPX command**: `npx @pimzino/claude-code-spec-workflow@latest generate-task-commands {feature-name}`
-- **User choice**: Always ask the user if they want task commands generated (yes/no)
-- **Restart requirement**: Inform user to restart Claude Code for new commands to be visible
+### Implementation Readiness
+- After all phases are approved, the spec is ready for implementation
+- Use `/spec-execute [task-number] {feature-name}` to implement individual tasks
+- Tasks can be executed in dependency order or as needed
+- Each task completion will be tracked in tasks.md
 
 ## Error Handling
 
@@ -303,8 +258,7 @@ A successful spec workflow completion includes:
 ```
 
 ## Implementation Phase
-After completing all phases and generating task commands, Display the following information to the user:
-0. **RESTART Claude Code** for new commands to be visible
-1. **Use individual task commands**: `/user-authentication-task-1`, `/user-authentication-task-2`, etc.
-2. **Or use spec-execute**: Execute tasks individually as needed
-3. **Track progress**: Use `/spec-status user-authentication` to monitor progress
+After completing all phases, display the following information to the user:
+1. **Use spec-execute**: Execute tasks individually with `/spec-execute [task-number] {feature-name}`
+2. **Track progress**: Tasks will be marked as complete in tasks.md as they are finished
+3. **Monitor progress**: Review tasks.md file to see which tasks are pending, in-progress, or completed
