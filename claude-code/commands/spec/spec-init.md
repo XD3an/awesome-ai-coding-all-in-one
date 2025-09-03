@@ -3,6 +3,7 @@
 Initialize the spec-driven development environment for the current project.
 
 ## Usage
+
 ```
 /spec-init
 ```
@@ -14,6 +15,7 @@ You are helping set up the spec-driven development environment. This command cre
 ### Initialization Process
 
 1. **Create Directory Structure**
+
    ```
    .claude/
    ├── specs/           # Feature specifications directory
@@ -22,6 +24,7 @@ You are helping set up the spec-driven development environment. This command cre
    ```
 
 2. **Check Existing Structure**
+
    - Verify if `.claude/` directory already exists
    - Check for existing steering documents
    - Identify what needs to be created vs. what already exists
@@ -29,64 +32,82 @@ You are helping set up the spec-driven development environment. This command cre
 3. **Create Steering Documents** (if they don't exist)
 
    **Create `.claude/steering/product.md`**:
+
    ```markdown
    # Product Vision and Goals
 
    ## Product Overview
+
    [Describe the product's purpose and main value proposition]
 
    ## Target Users
+
    [Define primary user personas and their needs]
 
    ## Core Features
+
    [List the main features that define the product]
 
    ## Success Metrics
+
    [Define how success is measured for this product]
 
    ## Product Principles
+
    [Core principles that guide product decisions]
    ```
 
    **Create `.claude/steering/tech.md`**:
+
    ```markdown
    # Technical Standards and Patterns
 
    ## Technology Stack
+
    [Document the primary technologies, frameworks, and libraries used]
 
    ## Architecture Patterns
+
    [Describe the architectural patterns and conventions followed]
 
    ## Code Standards
+
    [Define coding standards, naming conventions, and best practices]
 
    ## Development Workflow
+
    [Outline the development process and tools used]
 
    ## Testing Strategy
+
    [Define testing approaches and requirements]
    ```
 
    **Create `.claude/steering/structure.md`**:
+
    ```markdown
    # Project Structure Conventions
 
    ## Directory Organization
+
    [Define how the project is organized and where different types of files go]
 
    ## File Naming Conventions
+
    [Specify naming patterns for files and directories]
 
    ## Component Organization
+
    [Describe how components, modules, and features are structured]
 
    ## Configuration Management
+
    [Explain how configuration files are organized and managed]
    ```
 
 4. **Verify Template Files**
-   - Check if template files exist in `claude-code/templates/`
+
+   - Check if template files exist in `.claude/templates/`
    - Ensure requirements-template.md, design-template.md, and tasks-template.md are available
    - Report any missing templates that need to be created
 
@@ -109,7 +130,7 @@ After setup, provide a comprehensive report:
 
 ### Steering Documents
 - [x] product.md - Product vision and goals
-- [x] tech.md - Technical standards and patterns  
+- [x] tech.md - Technical standards and patterns
 - [x] structure.md - Project structure conventions
 
 ### Available Commands
@@ -126,12 +147,14 @@ After setup, provide a comprehensive report:
 ### Pre-existing Structure Handling
 
 **If .claude/ already exists**:
+
 - Report what's already present
 - Only create missing components
 - Preserve existing steering documents
 - Ask if user wants to update any existing files
 
 **If steering documents exist**:
+
 - Report current steering document status
 - Suggest reviewing them for completeness
 - Don't overwrite existing content
@@ -141,11 +164,13 @@ After setup, provide a comprehensive report:
 Analyze the current project to suggest steering document content:
 
 1. **Technology Detection**
+
    - Check package.json, requirements.txt, Cargo.toml, etc.
    - Identify frameworks and libraries in use
    - Detect testing frameworks and tools
 
 2. **Structure Analysis**
+
    - Examine directory organization
    - Identify naming patterns
    - Look for existing architectural patterns
@@ -158,14 +183,17 @@ Analyze the current project to suggest steering document content:
 ### Error Handling
 
 **Permission Issues**:
+
 - Report if directories cannot be created
 - Suggest alternative locations or manual creation
 
 **Existing Content Conflicts**:
+
 - Never overwrite existing steering documents
 - Report conflicts and suggest manual review
 
 **Missing Templates**:
+
 - Report missing template files
 - Suggest manual template creation or update
 
@@ -179,6 +207,7 @@ Analyze the current project to suggest steering document content:
 ## Success Criteria
 
 A successful initialization includes:
+
 - [x] Directory structure created (.claude/specs/, .claude/steering/)
 - [x] Steering documents created with project-specific content
 - [x] Template availability confirmed
