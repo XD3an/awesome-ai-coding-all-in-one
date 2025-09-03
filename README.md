@@ -26,6 +26,8 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 - [opcode/Claudia](https://github.com/getAsterisk/opcode)
 
+- [slopus/happy](https://github.com/slopus/happy)
+
 ## 🤖 AI-Powered IDEs & Editors
 
 - [GitHub Copilot](https://copilot.github.com/)：AI pair programmer
