@@ -16,7 +16,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 - [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code)：Claude Code workflows, slash-commands, and templates
 
-- [claude-code-spec-workflow](https://github.com/Pimzino/claude-code-spec-workflow)
+- [claude-code-spec](https://github.com/gotalab/claude-code-spec)
 
 #### Tools
 
@@ -27,6 +27,9 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [opcode/Claudia](https://github.com/getAsterisk/opcode)
 
 - [slopus/happy](https://github.com/slopus/happy)
+
+- [claude-code-spec-workflow](https://github.com/Pimzino/claude-code-spec-workflow)
+
 
 ## 🤖 AI-Powered IDEs & Editors
 
