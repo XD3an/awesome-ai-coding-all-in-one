@@ -124,3 +124,5 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [langchain](https://github.com/langchain-ai/langchain)：Building applications with LLMs through composability
 - [llamaindex](https://github.com/run-llama/llama_index)：LlamaIndex is a data framework for LLM applications
 - [transformers](https://github.com/huggingface/transformers)：State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow
+
+- [PocketFlow](https://github.com/The-Pocket/PocketFlow) : a 100-line minimalist LLM framework
