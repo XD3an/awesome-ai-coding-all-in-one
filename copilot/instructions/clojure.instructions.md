@@ -7,6 +7,11 @@ applyTo: '**/*.{clj,cljs,cljc,bb,edn.mdx?}'
 
 ## Code Evaluation Tool usage
 
+“Use the repl” means to use the **Evaluate Clojure Code** tool from Calva Backseat Driver. It connects you to the the same REPL as the user is connected to via Calva.
+
+- Always stay inside Calva's REPL instead of launching a second one from the terminal.
+- If there is no REPL connection, ask the user to connect the REPL instead of trying to start and connect it yourself.
+
 ### JSON Strings in REPL Tool Calls
 Do not over-escape JSON arguments when invoking REPL tools.
 
@@ -189,21 +194,7 @@ Rich Comment Forms `(comment ...)` serve a different purpose than direct REPL ev
 - **Exploration preservation** - Keep useful REPL discoveries in the codebase
 - **Example scenarios** - Demonstrate edge cases and typical usage
 
-### Docstrings in `defn`
-Docstrings belong immediately after the function name and before the argument vector.
-
-```clojure
-(defn my-function
-  "This function does something."
-  [arg1 arg2]
-  ;; function body
-  )
-```
-
-- Define functions before they are used—prefer ordering over `declare` except when truly necessary.
-
 ### RCF Patterns
-
 RCF = Rich Comment Forms.
 
 When files are loaded code in RCFs is not evaluated, making them perfect for documenting example usage, since humans easily can evaluate the code in there at will.
