@@ -26,7 +26,6 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [slopus/happy](https://github.com/slopus/happy)
 - [claude-code-spec-workflow](https://github.com/Pimzino/claude-code-spec-workflow)
 
-
 ## AI-Powered IDEs & Editors
 
 - [GitHub Copilot](https://copilot.github.com/)：AI pair programmer
