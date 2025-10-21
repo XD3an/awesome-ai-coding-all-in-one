@@ -1,0 +1,58 @@
+[
+    {
+        "key": "ctrl+u",
+        "command": "workbench.action.chat.startVoiceChat",
+        "when": "!voiceChatInProgress"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "workbench.action.chat.stopListeningAndSubmit",
+        "when": "voiceChatInProgress"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.editorDictation.start",
+        "when": "!editorDictation.inProgress"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.editorDictation.stop",
+        "when": "editorDictation.inProgress"
+    },
+    {
+        "key": "tab",
+        "command": "-markdown.extension.onTabKey"
+    },
+    {
+        "key": "tab",
+        "command": "markdown.extension.onTabKey",
+        "when": "!tabShouldJumpToInlineEdit && !tabShouldAcceptInlineEdit && editorTextFocus && markdown.extension.editor.cursor.inList && !editorHasMultipleSelections && !editorReadonly && !editorTabMovesFocus && !hasOtherSuggestions && !hasSnippetCompletions && !inSnippetMode && !inlineSuggestionVisible && !markdown.extension.editor.cursor.inFencedCodeBlock && !markdown.extension.editor.cursor.inMathEnv && !suggestWidgetVisible && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
+    },
+    {
+        "key": "ctrl+l c",
+        "command": "-extension.copyGitHubLinkToClipboard"
+    },
+    {
+        "key": "ctrl+l g",
+        "command": "-extension.openInGitHub"
+    },
+    {
+        "key": "ctrl+l p",
+        "command": "-extension.openPrGitProvider"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "workbench.action.editor.changeLanguageMode",
+        "when": "!notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+k m",
+        "command": "-workbench.action.editor.changeLanguageMode",
+        "when": "!notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+backspace",
+        "command": "-chatEditor.action.reject",
+        "when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress"
+    }
+]
