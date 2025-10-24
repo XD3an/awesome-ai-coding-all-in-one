@@ -126,6 +126,10 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 ## AI Development Tools
 
+### Spec-Driven Development (SDD): Toolkit to help you get started with Spec-Driven Development.
+
+- [spec-kit](https://github.com/github/spec-kit)
+
 ### Model Context Protocol (MCP) Servers
 
 - [mcp-servers](https://github.com/modelcontextprotocol/servers)：Official MCP server implementations
