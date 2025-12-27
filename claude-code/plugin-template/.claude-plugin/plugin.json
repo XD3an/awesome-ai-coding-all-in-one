@@ -1,0 +1,8 @@
+{
+  "name": "kaodean-plugin",
+  "description": "a plugin for kaodean",
+  "version": "1.0.0",
+  "author": {
+    "name": "Dean"
+  }
+}
