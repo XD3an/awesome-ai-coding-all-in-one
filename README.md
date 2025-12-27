@@ -16,8 +16,6 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 - [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code)：Claude Code workflows, slash-commands, and templates
 
-- [claude-code-spec](https://github.com/gotalab/claude-code-spec)
-
 - [claude-code-skills](https://github.com/anthropics/skills/tree/main/skills)
 
 - [claude-code-plugin](https://github.com/anthropics/claude-code/tree/main/plugins)
@@ -29,6 +27,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [opcode/Claudia](https://github.com/getAsterisk/opcode)
 - [slopus/happy](https://github.com/slopus/happy)
 - [claude-code-spec-workflow](https://github.com/Pimzino/claude-code-spec-workflow)
+- [claude-code-spec](https://github.com/gotalab/claude-code-spec)
 
 ### Gemini AI Studio - build
 
