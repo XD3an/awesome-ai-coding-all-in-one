@@ -27,11 +27,11 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: 🌐 Sparse clone agent folders into claude-code/sub-agents/
+      - name: 🌐 Sparse clone agent folders into claude-code/agents/
         run: |
-          echo "📦 Cloning agent folders into claude-code/sub-agents/..."
-          rm -rf claude-code/sub-agents
-          mkdir -p claude-code/sub-agents
+          echo "📦 Cloning agent folders into claude-code/agents/..."
+          rm -rf claude-code/agents
+          mkdir -p claude-code/agents
           git clone --depth=1 --filter=blob:none --sparse https://github.com/contains-studio/agents.git temp-upstream
           cd temp-upstream
           git sparse-checkout set \
@@ -46,7 +46,7 @@ jobs:
           export UPSTREAM_COMMIT=$(git rev-parse --short HEAD)
           echo "UPSTREAM_COMMIT=${UPSTREAM_COMMIT}" >> $GITHUB_ENV
           for folder in design engineering marketing product project-management studio-operations testing bonus; do
-            cp -r $folder ../claude-code/sub-agents/ || true
+            cp -r $folder ../claude-code/agents/ || true
           done
           cd ..
           rm -rf temp-upstream
@@ -55,7 +55,7 @@ jobs:
         env:
           GIT_TOKEN: ${{ secrets.SYNC_PAT }}
         run: |
-          git add claude-code/sub-agents
+          git add claude-code/agents
           git diff --cached --quiet && echo "✅ No changes to commit." && exit 0
           git commit -m "🔄 Sync agent folders from contains-studio/agents (${UPSTREAM_COMMIT}) [bot][action]"
           git push https://x-access-token:${GIT_TOKEN}@github.com/XD3an/awesome-ai-coding-all-in-one.git HEAD:main
