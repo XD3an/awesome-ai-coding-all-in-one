@@ -18,6 +18,8 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 - [claude-code-spec](https://github.com/gotalab/claude-code-spec)
 
+- [claude-code-plugin](https://github.com/anthropics/claude-code/tree/main/plugins)
+
 #### Tools
 
 - [ccusage](https://github.com/ryoppippi/ccusage)
@@ -26,6 +28,8 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [slopus/happy](https://github.com/slopus/happy)
 - [claude-code-spec-workflow](https://github.com/Pimzino/claude-code-spec-workflow)
 
+### Gemini AI Studio - build
+
 ## AI-Powered IDEs & Editors
 
 - [GitHub Copilot](https://copilot.github.com/)：AI pair programmer
@@ -33,6 +37,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [Windsurf Editor by Codeium](https://codeium.com/windsurf)：Agentic IDE where developers and AI flow together
 - [Augment Code](https://www.augmentcode.com/)：AI coding assistant for professional engineers
 - [Amazon Kiro](https://kiro.dev/)：The AI IDE for prototype to production
+- [gemini-ai-studio](https://aistudio.google.com): Google Gemini AI Studio App builds
 
 ## Cloud Development Platforms
 
