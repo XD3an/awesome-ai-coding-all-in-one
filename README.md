@@ -18,6 +18,8 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 - [claude-code-spec](https://github.com/gotalab/claude-code-spec)
 
+- [claude-code-skills](https://github.com/anthropics/skills/tree/main/skills)
+
 - [claude-code-plugin](https://github.com/anthropics/claude-code/tree/main/plugins)
 
 #### Tools
