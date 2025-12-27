@@ -1,4 +1,4 @@
-name: "🔄 Sync `skills` from `anthropics/skills`"
+name: "🔄 Sync `claude-code/skills` from `anthropics/skills`"
 
 on:
   schedule:
