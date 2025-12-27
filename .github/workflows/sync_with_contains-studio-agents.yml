@@ -1,4 +1,4 @@
-name: "🔄 Sync agents template folders from contains-studio/agents to claude-code/sub-agents"
+name: "🔄 Sync `claude-code/agents` from `contains-studio/agents`"
 
 on:
   schedule:
