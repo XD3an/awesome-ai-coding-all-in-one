@@ -1,1 +1,323 @@
-.claude
+# ------------------------------------------------------------------------------
+# Python
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv
+virtualenv/
+
+# uv Package Manager
+.uv/
+uv.lock
+
+# ------------------------------------------------------------------------------
+# Node.js & JavaScript
+# ------------------------------------------------------------------------------
+node_modules/
+jspm_packages/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# Dependency lock files (optional, uncomment if needed)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+.nuxt/
+.output/
+.cache/
+.parcel-cache/
+
+# ------------------------------------------------------------------------------
+# Testing & Coverage
+# ------------------------------------------------------------------------------
+.pytest_cache/
+.coverage
+htmlcov/
+coverage/
+*.lcov
+.nyc_output
+.vscode-test/
+*.tsbuildinfo
+
+# ------------------------------------------------------------------------------
+# IDE & Editors
+# ------------------------------------------------------------------------------
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# ------------------------------------------------------------------------------
+# Operating Systems
+# ------------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ------------------------------------------------------------------------------
+# Environment Variables
+# ------------------------------------------------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*
+!.env.example
+!.env.template
+
+# ------------------------------------------------------------------------------
+# Logs & Runtime Data
+# ------------------------------------------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pids/
+*.pid
+*.seed
+*.pid.lock
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# ------------------------------------------------------------------------------
+# Project Output & Generated Files
+# ------------------------------------------------------------------------------
+output/
+screenshots/
+videos/
+results/
+*.png
+*.webm
+*.mp4
+*.gif
+*.jpg
+*.jpeg
+
+# Uncomment if you want to track specific images
+# !docs/images/**
+# !assets/**
+
+# ------------------------------------------------------------------------------
+# Framework-Specific
+# ------------------------------------------------------------------------------
+# Next.js
+.next/
+out/
+
+# Nuxt.js
+.nuxt/
+.output/
+
+# Gatsby
+.cache/
+
+# VuePress
+.vuepress/dist/
+.vuepress/.temp/
+.vuepress/.cache/
+
+# Vitepress
+**/.vitepress/dist/
+**/.vitepress/cache/
+
+# SvelteKit
+.svelte-kit/
+
+# Docusaurus
+.docusaurus/
+build/
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+.vite/
+
+# ------------------------------------------------------------------------------
+# Package Managers
+# ------------------------------------------------------------------------------
+# npm
+.npm
+.node_repl_history
+*.tgz
+
+# Yarn
+.yarn-integrity
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# pnpm
+.pnpm-store/
+
+# Bower
+bower_components/
+
+# ------------------------------------------------------------------------------
+# Build Tools & Bundlers
+# ------------------------------------------------------------------------------
+.grunt
+.fusebox/
+.lock-wscript
+lib-cov
+
+# Webpack
+.webpack/
+
+# Snowpack
+web_modules/
+
+# Parcel
+.parcel-cache/
+
+# ------------------------------------------------------------------------------
+# Cloud & Deployment
+# ------------------------------------------------------------------------------
+# Serverless Framework
+.serverless/
+
+# Firebase
+.firebase/
+
+# Vercel
+.vercel
+
+# Netlify
+.netlify/
+
+# AWS
+.aws-sam/
+
+# ------------------------------------------------------------------------------
+# Database
+# ------------------------------------------------------------------------------
+*.sqlite
+*.sqlite3
+*.db
+.dynamodb/
+
+# ------------------------------------------------------------------------------
+# AI Coding Tools
+# ------------------------------------------------------------------------------
+# Claude
+.claude/
+.claude-cache/
+
+# GitHub Copilot (if storing configs locally)
+# .github/copilot/
+
+# Cursor
+.cursor/
+
+# Aider
+.aider*
+
+# ------------------------------------------------------------------------------
+# Miscellaneous
+# ------------------------------------------------------------------------------
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Compressed files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+.tern-port
+
+# Optional caches
+.eslintcache
+.stylelintcache
