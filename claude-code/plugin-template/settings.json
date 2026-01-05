@@ -8,6 +8,9 @@
     "plugin-dev@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "clangd-lsp@claude-plugins-official": true
+    "clangd-lsp@claude-plugins-official": true,
+    "ralph-wiggum@claude-plugins-official": true,
+    "slack@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true
   }
 }

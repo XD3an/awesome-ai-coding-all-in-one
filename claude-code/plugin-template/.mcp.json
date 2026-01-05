@@ -3,10 +3,6 @@
     "notion": {
       "type": "http",
       "url": "https://mcp.notion.com/mcp"
-    },
-    "hugging-face": {
-      "type": "http",
-      "url": "https://huggingface.co/mcp"
     }
   }
 }
