@@ -1,0 +1,84 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write.*\\.(ts|tsx|js|jsx)$",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "[✓] Quick code quality check for $FILE:\n1. Any obvious bugs or errors?\n2. Follows TypeScript/JavaScript best practices?\n3. Any security concerns?\n\nProvide a brief one-line assessment. If everything looks good, just say '✓ Code looks good'"
+          }
+        ]
+      },
+      {
+        "matcher": "Write.*\\.(py)$",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "[✓] Quick Python code review for $FILE:\n1. Any syntax errors or obvious bugs?\n2. Follows PEP 8 style guidelines?\n3. Any security issues?\n\nProvide a brief one-line assessment. If all good, say '✓ Code looks good'"
+          }
+        ]
+      },
+      {
+        "matcher": "Write.*\\.(json)$",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "[✓] Validate JSON syntax in $FILE. One-line summary only. If valid, say '✓ JSON is valid'"
+          }
+        ]
+      },
+      {
+        "matcher": "Write.*\\.(md|markdown)$",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "[✓] Quick markdown check for $FILE: Check syntax and formatting. One-line summary only. If good, say '✓ Markdown looks good'"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write.*package\\.json$",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "[!] ⚠️ About to modify package.json. Quick checks:\n1. Version follows semver?\n2. Dependencies from trusted sources?\n3. No conflicts?\n\nBriefly confirm or raise concerns."
+          }
+        ]
+      },
+      {
+        "matcher": "Write.*\\.env.*$",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "[!] ⚠️ About to modify environment file. Ensure:\n1. No secrets in committed files\n2. Use .env.example for templates\n3. Sensitive data properly handled\n\nBriefly confirm safety."
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "[-] Tool execution failed. Quickly analyze the error and suggest a fix in 1-2 sentences."
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[+] 👋 Session started successfully!'"
+          }
+        ]
+      }
+    ]
+  }
+}

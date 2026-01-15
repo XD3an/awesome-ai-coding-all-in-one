@@ -1,8 +1,11 @@
 {
-  "name": "kaodean-plugin",
-  "description": "a plugin for kaodean",
+  "name": "awesome-ai-coding-all-in-one",
   "version": "1.0.0",
+  "description": "A comprehensive collection of AI coding tools, agents, commands, and skills for enhanced development workflows",
   "author": {
-    "name": "Dean"
-  }
+    "name": "Dean",
+    "url": "https://github.com/XD3an"
+  },
+  "homepage": "https://github.com/XD3an/awesome-ai-coding-all-in-one",
+  "repository": "https://github.com/XD3an/awesome-ai-coding-all-in-one"
 }

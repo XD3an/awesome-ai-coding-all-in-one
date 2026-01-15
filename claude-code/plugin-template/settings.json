@@ -11,6 +11,8 @@
     "clangd-lsp@claude-plugins-official": true,
     "ralph-wiggum@claude-plugins-official": true,
     "slack@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true
+    "code-review@claude-plugins-official": true,
+    "compound-engineering@every-marketplace": true,
+    "coding-tutor@every-marketplace": true
   }
 }
