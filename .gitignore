@@ -321,3 +321,5 @@ temp/
 # Optional caches
 .eslintcache
 .stylelintcache
+
+data/
