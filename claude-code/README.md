@@ -37,3 +37,7 @@ claude-code/
 ```
 claude --plugin-dir ./plugin-template
 ```
+
+### Run with Docker
+
+- reference [README.docker.md](./README.docker.md)
