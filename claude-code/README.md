@@ -10,6 +10,8 @@ A comprehensive collection of AI-powered development tools and workflows designe
 
 - [claude-code-plugin](https://github.com/anthropics/claude-code/tree/main/plugins)
 
+- [everything-claude-code](https://github.com/affaan-m/everything-claude-code): Battle-tested configs from an Anthropic hackathon winner.
+
 ## Structure
 
 ```

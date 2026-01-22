@@ -1,19 +1,32 @@
 {
   "enabledPlugins": {
+    // Official plugins
     "agent-sdk-dev@claude-plugins-official": true,
-    "context7@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,        // Live documentation
     "github@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "plugin-dev@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "clangd-lsp@claude-plugins-official": true,
     "ralph-loop@claude-plugins-official": true,
     "slack@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
-    "compound-engineering@every-marketplace": true,
-    "coding-tutor@every-marketplace": true,
-    "superpowers@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,  // TS intelligence
+    "hookify@claude-plugins-official": true,         // Hook creation
+    "code-simplifier@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,     // Python types
+
+    // Community plugins
+    "everything-claude-code@everything-claude-code": true,
+    "ralph-wiggum@claude-code-plugins": true,        // Loop automation
+    "frontend-design@claude-code-plugins": true,     // UI/UX patterns
+    "commit-commands@claude-code-plugins": true,     // Git workflow
+    "security-guidance@claude-code-plugins": true,   // Security checks
+    "pr-review-toolkit@claude-code-plugins": true,   // PR automation
+    "feature-dev@claude-code-plugins": true,
+    "explanatory-output-style@claude-code-plugins": true,
+    "code-review@claude-code-plugins": true,
+
+    // Third-party plugins
+    "mgrep@Mixedbread-Grep": true                    // Better search
   }
 }
