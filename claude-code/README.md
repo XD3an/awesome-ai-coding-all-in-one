@@ -10,7 +10,13 @@ A comprehensive collection of AI-powered development tools and workflows designe
 
 - [claude-code-plugin](https://github.com/anthropics/claude-code/tree/main/plugins)
 
-- [everything-claude-code](https://github.com/affaan-m/everything-claude-code): Battle-tested configs from an Anthropic hackathon winner.
+- community plugins, skills, and commands:
+
+  - [everything-claude-code](https://github.com/affaan-m/everything-claude-code): Battle-tested configs from an Anthropic hackathon winner.
+
+  - [superpowers-claude-code](https://github.com/obra/superpowers-claude-code): Superpowers for Claude Code.
+
+  - [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin): Compound Engineering Plugin for Claude Code.
 
 ## Structure
 
