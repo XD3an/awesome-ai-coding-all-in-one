@@ -1,0 +1,3 @@
+[submodule "claude-code/cc-plus"]
+	path = claude-code/cc-plus
+	url = https://github.com/XD3an/cc-plus
