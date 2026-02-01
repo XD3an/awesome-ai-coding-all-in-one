@@ -280,12 +280,14 @@ web_modules/
 # AI Coding Tools
 # ------------------------------------------------------------------------------
 # Claude
+.claude/
 .claude-cache/
 
 # GitHub Copilot (if storing configs locally)
 # .github/copilot/
 
 # Cursor
+.cursor/
 
 # Aider
 .aider*

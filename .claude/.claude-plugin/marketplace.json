@@ -1,0 +1,21 @@
+{
+  "name": "cc-plus",
+  "owner": {
+    "name": "Dean",
+    "url": "https://github.com/XD3an"
+  },
+  "plugins": [
+    {
+      "name": "cc-plus",
+      "source": "./",
+      "description": "A plugin that extends the capabilities of Claude Code by adding some useful and cool features and functionalities.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Dean",
+        "url": "https://github.com/XD3an"
+      },
+      "homepage": "https://github.com/XD3an/cc-plus",
+      "repository": "https://github.com/XD3an/cc-plus"
+    }
+  ]
+}
