@@ -32,7 +32,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python .claude/hooks/scripts/notify.py info \"Claude Code Session Started\"",
+            "command": "python .claude/hooks/scripts/notify.py info \"Claude is online! Let's rock~\"",
             "timeout": 10
           }
         ]
@@ -44,7 +44,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python .claude/hooks/scripts/notify.py info \"About to write a file\"",
+            "command": "python .claude/hooks/scripts/notify.py info \"About to write a file~\"",
             "timeout": 10
           }
         ]
@@ -56,7 +56,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python .claude/hooks/scripts/notify.py info \"Task completed\"",
+            "command": "python .claude/hooks/scripts/notify.py info \"Subtask done!\"",
             "timeout": 10
           }
         ]
@@ -66,7 +66,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python .claude/hooks/scripts/notify.py info \"Write or Edit operation completed\"",
+            "command": "python .claude/hooks/scripts/notify.py info \"File updated!\"",
             "timeout": 10
           }
         ]
@@ -78,7 +78,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python .claude/hooks/scripts/notify.py error \"Tool execution failed\"",
+            "command": "python .claude/hooks/scripts/notify.py error \"Oops! Something went wrong...\"",
             "timeout": 10
           }
         ]
@@ -89,7 +89,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python .claude/hooks/scripts/notify.py info \"Session ending\"",
+            "command": "python .claude/hooks/scripts/notify.py info \"All done! Come check it out~\"",
             "timeout": 10
           }
         ]
