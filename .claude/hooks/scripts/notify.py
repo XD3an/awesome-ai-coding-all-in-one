@@ -2,8 +2,16 @@
 """
 Cross-Platform Notification System for Claude Code
 Supports Windows, macOS, and Linux with native notification APIs
+
+Usage:
+  1. With stdin JSON (for hooks):
+     echo '{"hook_event_name":"Stop","tool_name":"Write"}' | python notify.py
+
+  2. With arguments (legacy):
+     python notify.py <type> <message>
 """
 
+import json
 import os
 import platform
 import sys
@@ -177,8 +185,114 @@ def show_notification(notification_type, message):
     return success
 
 
+def parse_stdin_json():
+    """Parse JSON input from stdin (sent by Claude Code hooks)"""
+    try:
+        if sys.stdin.isatty():
+            return None
+        raw = sys.stdin.read()
+        if not raw.strip():
+            return None
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        return None
+    except Exception:
+        return None
+
+
+def generate_message_from_hook(data):
+    """
+    Generate notification message based on hook event data
+
+    Returns:
+        tuple: (notification_type, title, message)
+    """
+    event_name = data.get("hook_event_name", "")
+    tool_name = data.get("tool_name", "")
+    tool_input = data.get("tool_input", {})
+    tool_response = data.get("tool_response", {})
+    error = data.get("error", "")
+
+    # SessionStart
+    if event_name == "SessionStart":
+        source = data.get("source", "startup")
+        return ("info", "Session Started", f"Session {source}")
+
+    # Stop
+    if event_name == "Stop":
+        return ("info", "Task Complete", "Claude has finished responding")
+
+    # PreToolUse
+    if event_name == "PreToolUse":
+        if tool_name in ("Write", "Edit"):
+            file_path = tool_input.get("file_path", "unknown")
+            filename = Path(file_path).name if file_path else "unknown"
+            return ("info", f"Writing: {filename}", f"Modifying {filename}")
+        if tool_name == "Bash":
+            cmd = tool_input.get("command", "")
+            short_cmd = cmd[:50] + "..." if len(cmd) > 50 else cmd
+            return ("info", "Running Command", short_cmd)
+        if tool_name == "Task":
+            desc = tool_input.get("description", "subtask")
+            return ("info", "Spawning Task", desc[:60])
+        return ("info", f"Tool: {tool_name}", f"Using {tool_name}")
+
+    # PostToolUse
+    if event_name == "PostToolUse":
+        if tool_name in ("Write", "Edit"):
+            file_path = tool_input.get("file_path", "")
+            filename = Path(file_path).name if file_path else "file"
+            success = tool_response.get("success", True)
+            status = "saved" if success else "failed"
+            return ("info", f"File {status}", filename)
+        if tool_name == "Task":
+            return ("info", "Subtask Done", "A subtask has completed")
+        return ("info", f"{tool_name} Done", f"{tool_name} completed")
+
+    # PostToolUseFailure
+    if event_name == "PostToolUseFailure":
+        short_err = error[:80] if error else "Unknown error"
+        return ("error", f"{tool_name} Failed", short_err)
+
+    # Notification
+    if event_name == "Notification":
+        ntype = data.get("notification_type", "info")
+        msg = data.get("message", "Notification")
+        return (ntype, "Claude Code", msg[:100])
+
+    # SubagentStart / SubagentStop
+    if event_name == "SubagentStart":
+        agent_type = data.get("agent_type", "Agent")
+        return ("info", "Agent Started", f"{agent_type} spawned")
+    if event_name == "SubagentStop":
+        agent_type = data.get("agent_type", "Agent")
+        return ("info", "Agent Stopped", f"{agent_type} finished")
+
+    # SessionEnd
+    if event_name == "SessionEnd":
+        reason = data.get("reason", "ended")
+        return ("info", "Session Ended", f"Reason: {reason}")
+
+    # Default fallback
+    return ("info", "Claude Code", event_name or "Hook triggered")
+
+
 def main():
     """Main entry point for the notification script"""
+    # Check for stdin JSON first (hook mode)
+    hook_data = parse_stdin_json()
+
+    if hook_data:
+        # Hook mode: generate message from JSON
+        ntype, title, message = generate_message_from_hook(hook_data)
+        success = show_notification(ntype, message)
+        if success:
+            print("Notification sent successfully")
+        else:
+            print("Notification failed")
+        sys.exit(0 if success else 1)
+
+    # Legacy mode: command line arguments
     if len(sys.argv) < 3:
         print("Usage: python notify.py <notification_type> <message>")
         print("\nNotification types:")

@@ -38,40 +38,6 @@
         ]
       }
     ],
-    "PreToolUse": [
-      {
-        "matcher": "Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python .claude/hooks/scripts/notify.py info \"About to write a file~\"",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Task",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python .claude/hooks/scripts/notify.py info \"Subtask done!\"",
-            "timeout": 10
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python .claude/hooks/scripts/notify.py info \"File updated!\"",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
     "PostToolUseFailure": [
       {
         "matcher": ".*",
