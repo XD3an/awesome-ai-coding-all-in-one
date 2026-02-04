@@ -1,59 +1,46 @@
 {
   "hooks": {
-    "PostToolUse": [
+    "SessionStart": [
       {
-        "matcher": "Write.*\\.(ts|tsx|js|jsx)$",
         "hooks": [
           {
-            "type": "prompt",
-            "prompt": "[✓] Quick code quality check for $FILE:\n1. Any obvious bugs or errors?\n2. Follows TypeScript/JavaScript best practices?\n3. Any security concerns?\n\nProvide a brief one-line assessment. If everything looks good, just say '✓ Code looks good'"
-          }
-        ]
-      },
-      {
-        "matcher": "Write.*\\.(py)$",
-        "hooks": [
-          {
-            "type": "prompt",
-            "prompt": "[✓] Quick Python code review for $FILE:\n1. Any syntax errors or obvious bugs?\n2. Follows PEP 8 style guidelines?\n3. Any security issues?\n\nProvide a brief one-line assessment. If all good, say '✓ Code looks good'"
-          }
-        ]
-      },
-      {
-        "matcher": "Write.*\\.(json)$",
-        "hooks": [
-          {
-            "type": "prompt",
-            "prompt": "[✓] Validate JSON syntax in $FILE. One-line summary only. If valid, say '✓ JSON is valid'"
-          }
-        ]
-      },
-      {
-        "matcher": "Write.*\\.(md|markdown)$",
-        "hooks": [
-          {
-            "type": "prompt",
-            "prompt": "[✓] Quick markdown check for $FILE: Check syntax and formatting. One-line summary only. If good, say '✓ Markdown looks good'"
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py info \"Claude Code Session Started\"",
+            "timeout": 10
           }
         ]
       }
     ],
     "PreToolUse": [
       {
-        "matcher": "Write.*package\\.json$",
+        "matcher": "Write",
         "hooks": [
           {
-            "type": "prompt",
-            "prompt": "[!] ⚠️ About to modify package.json. Quick checks:\n1. Version follows semver?\n2. Dependencies from trusted sources?\n3. No conflicts?\n\nBriefly confirm or raise concerns."
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py info \"About to write a file\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py info \"Task completed\"",
+            "timeout": 10
           }
         ]
       },
       {
-        "matcher": "Write.*\\.env.*$",
+        "matcher": "Write|Edit",
         "hooks": [
           {
-            "type": "prompt",
-            "prompt": "[!] ⚠️ About to modify environment file. Ensure:\n1. No secrets in committed files\n2. Use .env.example for templates\n3. Sensitive data properly handled\n\nBriefly confirm safety."
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py info \"Write or Edit operation completed\"",
+            "timeout": 10
           }
         ]
       }
@@ -63,19 +50,20 @@
         "matcher": ".*",
         "hooks": [
           {
-            "type": "prompt",
-            "prompt": "[-] Tool execution failed. Quickly analyze the error and suggest a fix in 1-2 sentences."
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py error \"Tool execution failed\"",
+            "timeout": 10
           }
         ]
       }
     ],
-    "SessionStart": [
+    "Stop": [
       {
-        "matcher": ".*",
         "hooks": [
           {
             "type": "command",
-            "command": "echo '[+] 👋 Session started successfully!'"
+            "command": "python .claude/hooks/scripts/notify.py info \"Session ending\"",
+            "timeout": 10
           }
         ]
       }

@@ -5,7 +5,7 @@
     "github@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "plugin-dev@claude-plugins-official": true,
-    "ralph-loop@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": false,
     "slack@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
@@ -23,6 +23,77 @@
     "code-review@claude-code-plugins": true,
     "everything-claude-code@everything-claude-code": true,
     "planning-with-files@planning-with-files": true,
-    "mgrep@Mixedbread-Grep": true
+    "mgrep@Mixedbread-Grep": true,
+    "notify": true
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py info \"Claude Code Session Started\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py info \"About to write a file\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py info \"Task completed\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py info \"Write or Edit operation completed\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py error \"Tool execution failed\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/scripts/notify.py info \"Session ending\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   }
 }
