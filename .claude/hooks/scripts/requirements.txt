@@ -1,0 +1,11 @@
+# Cross-Platform Notification Dependencies
+
+# Windows notifications
+win10toast>=0.9; platform_system=="Windows"
+
+# macOS notifications
+pync>=2.0.3; platform_system=="Darwin"
+
+# Linux notifications
+notify2>=0.3.1; platform_system=="Linux"
+dbus-python>=1.2.18; platform_system=="Linux"

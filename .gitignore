@@ -324,3 +324,10 @@ temp/
 .stylelintcache
 
 data/
+
+# LiteLLM Proxy
+litellm-proxy/
+# LiteLLM Keys and Config
+litellm-keys.env
+litellm-config.yaml
+copilot-config.yaml
