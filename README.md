@@ -73,6 +73,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [Gemini CLI](https://github.com/google-gemini/gemini-cli)：Google Gemini directly in your terminal
 - [Qwen Code](https://github.com/QwenLM/qwen-code)：Coding agent that lives in digital world
 - [OpenCode](https://opencode.ai/)：AI coding agent built for the terminal
+- [Tura](https://github.com/Tura-AI/tura)：Open-source local coding agent with CLI/TUI/GUI, task-scoped context, macro command execution, verification, and public benchmarks
 - [Crush](https://github.com/charmbracelet/crush)：Glamorous AI coding agent for terminal
 - [GitHub Copilot CLI](https://cli.github.com/)：Terminal AI assistance
 
