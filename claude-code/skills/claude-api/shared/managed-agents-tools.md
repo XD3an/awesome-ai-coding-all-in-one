@@ -70,7 +70,7 @@ Control when server-executed tools (agent toolset + MCP) run automatically vs wa
 | Policy | Behavior |
 |---|---|
 | `always_allow` | Tool executes automatically (default) |
-| `always_ask` | Session emits `session.status_idle` and pauses until you send a `tool_confirmation` event |
+| `always_ask` | Session emits `session.status_idle` and pauses until you send a `user.tool_confirmation` event |
 
 ```json
 {
@@ -88,8 +88,8 @@ Control when server-executed tools (agent toolset + MCP) run automatically vs wa
 **Responding to `always_ask`:** Send a `user.tool_confirmation` event with `tool_use_id` from the triggering `agent_tool_use`/`mcp_tool_use` event:
 
 ```json
-{ "type": "tool_confirmation", "tool_use_id": "sevt_abc123", "result": "allow" }
-{ "type": "tool_confirmation", "tool_use_id": "sevt_def456", "result": "deny", "message": "Read .env.example instead" }
+{ "type": "user.tool_confirmation", "tool_use_id": "sevt_abc123", "result": "allow" }
+{ "type": "user.tool_confirmation", "tool_use_id": "sevt_def456", "result": "deny", "message": "Read .env.example instead" }
 ```
 
 The optional `message` on a deny is delivered to the agent so it can adjust its approach.
@@ -182,9 +182,9 @@ This keeps secrets out of reusable agent definitions. Each vault credential is t
 
 > 💡 **Per-tool enablement (empirical):** `mcp_toolset` has been observed accepting `default_config: {enabled: false}` + `configs: [{name, enabled: true}]` for an allowlist pattern. The API ref shows only the minimal `{type, mcp_server_name}` form.
 
-> 💡 **Changing tools/MCP servers on a running session:** `sessions.update()` can replace `agent.tools`, `agent.mcp_servers`, and `vault_ids` while the session is `idle` — a session-local override that doesn't touch the agent object. See `shared/managed-agents-core.md` → Updating the agent configuration mid-session.
+> 💡 **Changing tools/MCP servers on a running session:** `sessions.update()` can replace `agent.tools` and `agent.mcp_servers` while the session is `idle` — a session-local override that doesn't touch the agent object. `vault_ids` is create-only. See `shared/managed-agents-core.md` → Updating the agent configuration mid-session.
 
-**Large MCP tool outputs.** If an MCP tool returns more than **100K tokens**, the output is automatically offloaded to a file in the sandbox — the agent receives a truncated preview plus the file path and can `read` the full content. No configuration required.
+**Large tool outputs.** If a tool returns more than **100,000 characters (roughly 25,000 tokens)**, the output is automatically offloaded to a file in the sandbox — the agent receives a truncated preview plus the file path and can `read` the full content. No configuration required. The threshold is in *characters*, not tokens, and applies to built-in agent tools as well as MCP tools.
 
 **Invalid vault credentials don't block session creation.** If a vault credential is invalid for a declared MCP server, the session still creates successfully; a `session.error` event describes the MCP auth failure, and auth retries on the next `session.status_idle` → `session.status_running` transition.
 
@@ -194,7 +194,7 @@ This keeps secrets out of reusable agent definitions. Each vault credential is t
 
 **Vaults** store credentials that Anthropic manages on your behalf. Two credential categories:
 
-- **MCP credentials** (`mcp_oauth`, `static_bearer`) — keyed by `mcp_server_url`. When the agent connects to a server at that URL, the token is injected automatically. `mcp_oauth` tokens are auto-refreshed via the standard OAuth 2.0 `refresh_token` grant. This is the only way to authenticate MCP servers.
+- **MCP credentials** (`mcp_oauth`, `static_bearer`) — keyed by `mcp_server_url`. When the agent connects to a server at that URL, the token is injected automatically. **Matching is normalized, not byte-exact:** scheme and host are lowercased, and default ports and trailing slashes are stripped, so host casing, an explicit default port, or a trailing slash won't break the match. A different path, subdomain, or *non-default* port will. If nothing matches, the connection is attempted unauthenticated. `mcp_oauth` tokens are auto-refreshed via the standard OAuth 2.0 `refresh_token` grant. This is the only way to authenticate MCP servers.
 - **Environment variables** (`environment_variable`) — keyed by `secret_name` (the env var name). The sandbox sees only an **opaque placeholder**; the real secret is substituted into the outbound request **at egress**. Use this for any service that authenticates through an environment variable: CLIs (`aws`, `gcloud`, `stripe`), SDKs, or direct `curl` calls from the `bash` tool.
 
 Secret fields you supply (`token`, `access_token`, `refresh_token`, `client_secret`, `secret_value`) are write-only — never returned in API responses.
@@ -205,7 +205,7 @@ Vaults store credentials; those credentials **never enter the sandbox**. This is
 
 - **MCP tool calls** are routed through an Anthropic-side proxy that fetches the credential from the vault and adds it to the outbound request.
 - **Git operations on attached GitHub repositories** (`git pull`, `git push`, GitHub REST calls) are routed through a git proxy that injects the `github_repository` resource's `authorization_token` the same way.
-- **Environment-variable credentials** appear in the sandbox as an opaque placeholder; the real value replaces the placeholder at egress, on requests to the credential's allowed hosts only.
+- **Environment-variable credentials** appear in the sandbox as an opaque placeholder; the real value replaces the placeholder at egress, on requests to the credential's allowed hosts only. Substitution covers request **headers and body only** — a secret embedded in the **URL path** is never substituted, so path-secret endpoints (e.g. Slack incoming-webhook URLs) can't be vaulted; use header-based auth instead (for Slack: a bot token in `Authorization` via `chat.postMessage`).
 
 **When vault credentials don't fit** (e.g. self-hosted sandboxes — `environment_variable` is not yet supported there), **register a custom tool:** the agent emits `agent.custom_tool_use`, your orchestrator (which already holds the credential) executes the call and returns `user.custom_tool_result` over the same authenticated event stream. No public endpoint is exposed; the sandbox never sees the secret. See `shared/managed-agents-client-patterns.md` → Pattern 9.
 
@@ -280,6 +280,8 @@ Omit `refresh` entirely if you only have an access token with no refresh capabil
 
 A credential must have at least one location enabled; a create or update that would disable both returns 400, as does explicit `null` for the object or either field (omit instead). The response always returns both fields with their resolved values.
 
+> ⚠️ **Credentials created in the Console are header-only by default** — unlike the API, where omitting the field enables both. If your client sends the secret in the request body (a form-encoded token request, for example), the placeholder passes through literally and the service rejects it with its own authentication error. Tick body injection in the Console form, or `POST` the credential with `{"injection_location": {"body": true}}`.
+
 > ⚠️ **Two networking layers, both required.** `networking.allowed_hosts` on the credential controls which requests *use the secret*, not which requests are *allowed*. The agent must also be able to reach the domain at the **environment level** (`unrestricted`, or the host listed in the environment's `allowed_hosts` — see `shared/managed-agents-environments.md`). A domain missing from either layer means the secret-substituted request fails.
 
 > ⚠️ **Client-side validation caveat.** Substitution happens at egress, not inside the sandbox — clients that validate the credential *format* locally before making a network request (e.g. a CLI that checks the key starts with `sk-`) will see the opaque placeholder and may fail at startup. If a client rejects the credential before any network call, that's why.
@@ -303,7 +305,7 @@ A credential must have at least one location enabled; a create or update that wo
 
 Skills are reusable, filesystem-based resources that provide your agent with domain-specific expertise: workflows, context, and best practices that transform general-purpose agents into specialists. Unlike prompts (conversation-level instructions for one-off tasks), skills load on-demand and eliminate the need to repeatedly provide the same guidance across multiple conversations.
 
-Two types — both work the same way; the agent automatically uses them when relevant to the task at hand:
+Skills reach the agent two ways: **attached** through the agent's `skills` array, or **loaded from a GitHub repository** mounted on the session (see § Skills from a GitHub repository below). The agent automatically uses them when relevant to the task at hand:
 
 | Type | What it is |
 |---|---|
@@ -320,7 +322,7 @@ Skills are attached to the **agent** definition via `agents.create()`:
 const agent = await client.beta.agents.create(
   {
     name: "Financial Agent",
-    model: "claude-opus-4-8",
+    model: "claude-opus-5",
     system: "You are a financial analysis agent.",
     skills: [
       { type: "anthropic", skill_id: "xlsx" },
@@ -335,7 +337,7 @@ Python:
 ```python
 agent = client.beta.agents.create(
     name="Financial Agent",
-    model="claude-opus-4-8",
+    model="claude-opus-5",
     system="You are a financial analysis agent.",
     skills=[
         {"type": "anthropic", "skill_id": "xlsx"},
@@ -350,7 +352,22 @@ agent = client.beta.agents.create(
 |---|---|---|
 | `type` | `"anthropic"` | `"custom"` |
 | `skill_id` | Skill name (e.g. `"xlsx"`, `"docx"`, `"pptx"`, `"pdf"`) | Skill ID from Skills API (e.g. `"skill_abc123"`) |
-| `version` | — | `"latest"` or a specific version number |
+| `version` | `"latest"` or a specific version number | `"latest"` or a specific version number |
+
+`version` is optional on **both** kinds and defaults to `"latest"` — it is not custom-skill-only.
+
+### Skills from a GitHub repository
+
+Skills can also live in your codebase. When a session mounts a repository via the `github_repository` resource (see `shared/managed-agents-environments.md` → GitHub Repositories), the repository's root `.claude/skills` directory is scanned at session start, and each skill found becomes available to the agent: it sees each discovered skill's name, description, and sandbox path, and reads the skill's `SKILL.md` (plus any scripts/resources it ships) when a task matches.
+
+**The agent can discover any skill in `.claude/skills/<skill-name>/`** — one directory level deep at the repository root. Skills in the following locations are not discoverable: a bare `.claude/skills/SKILL.md` (no skill directory), anything nested deeper (`.claude/skills/tools/code-review/SKILL.md`), a `skills/` directory outside `.claude`, or a `.claude/skills` inside a package subdirectory (though those can still surface when the agent reads files under that subtree). The `SKILL.md` format is the same as uploaded custom skills.
+
+> ⚠️ **Repository skills are agent instructions — treat them as part of your trust boundary.** Anyone who can commit to a mounted repository (a merged external PR, a compromised dependency, a contributor) can add or edit `.claude/skills/` content, and the platform loads it at session start with no review step — where session tools like `bash` and `web_fetch` give injected instructions real capability. Only mount repositories you trust, and audit `.claude/skills/` before mounting one with external contributors.
+
+Rules:
+- **Cloud sandboxes only** — self-hosted sandboxes don't support `github_repository` resources, so they can't load repository skills.
+- **Scanned once, at session start**, from the repository state checked out then (the resource's `checkout` branch/commit, else the default branch). Commits pushed mid-session are not picked up — start a new session for updated skills. Repositories added to a *running* session are not scanned either.
+- **Coexists with attached skills.** If a repository skill shares a name with an attached skill (or a skill from another mounted repo), both are available, each announced with its own path.
 
 ### Skills API
 
