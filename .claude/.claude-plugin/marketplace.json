@@ -1,15 +1,16 @@
 {
   "name": "cc-plus",
+  "description": "A lean, curated set of custom skills, commands, hooks, and plugin config for Claude Code.",
   "owner": {
     "name": "Dean",
     "url": "https://github.com/XD3an"
   },
+  "allowCrossMarketplaceDependenciesOn": ["humanizer", "impeccable"],
   "plugins": [
     {
       "name": "cc-plus",
       "source": "./",
       "description": "A plugin that extends the capabilities of Claude Code by adding some useful and cool features and functionalities.",
-      "version": "1.0.0",
       "author": {
         "name": "Dean",
         "url": "https://github.com/XD3an"

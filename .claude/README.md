@@ -1,6 +1,6 @@
 # cc-plus
 
-A comprehensive collection of custom plugins, skills, commands, and configurations for Claude Code.
+A lean, curated set of custom skills, commands, hooks, and plugin config for Claude Code.
 
 ## Resources
 
@@ -13,22 +13,34 @@ A comprehensive collection of custom plugins, skills, commands, and configuratio
 ### Community Resources
 
 - [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) - Claude Code workflows, slash-commands, and templates
-- [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - Battle-tested configs from an Anthropic hackathon winner
 - [superpowers-claude-code](https://github.com/obra/superpowers-claude-code) - Superpowers for Claude Code
 - [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin) - Compound Engineering Plugin for Claude Code
+
+### Bundled Plugin Dependencies
+
+cc-plus doesn't vendor these, but declares them as [plugin dependencies](https://code.claude.com/docs/en/plugin-dependencies) in `.claude-plugin/plugin.json`, so installing cc-plus also resolves and enables them:
+
+- [humanizer](https://github.com/blader/humanizer) - removes AI-writing tells from text
+- [impeccable](https://github.com/pbakaus/impeccable) - frontend design fluency: `/impeccable polish`, `audit`, `critique`, ...
+
+Their marketplaces must already be known to your Claude Code installation, otherwise install reports a `dependency-unsatisfied` error naming the command to run first:
+
+```bash
+/plugin marketplace add blader/humanizer
+/plugin marketplace add pbakaus/impeccable
+```
 
 ## Structure
 
 ```
 cc-plus/
-├── .claude-plugin/             # Plugin metadata
-├── agents/                     # Custom agents
+├── .claude-plugin/             # Plugin metadata (plugin.json, marketplace.json)
+├── agents/                     # Subagents
 ├── commands/                   # Custom commands
-├── contexts/                   # Context definitions
-├── examples/                   # Example files
-├── hooks/                      # Custom hooks
-├── resources/                  # Documentation and resources
-├── rules/                      # Coding rules and guidelines
+├── examples/                   # Reference files (e.g. settings.json for manual installs)
+├── hooks/                      # Plugin hooks (hooks.json + scripts/notify.py)
+├── resources/                  # Reference material: example CLAUDE.md files, slash-commands, workflow guides
+├── scripts/                    # Standalone utility scripts (model switching, litellm proxy)
 ├── skills/                     # Custom skills
 ├── .dockerignore
 ├── .env.example
@@ -38,8 +50,7 @@ cc-plus/
 ├── Dockerfile
 ├── LICENCE
 ├── README.docker.md
-├── README.md
-└── settings.json
+└── README.md
 ```
 
 ## Usage
@@ -74,17 +85,8 @@ If you prefer manual control over what's installed:
 # Clone the repo
 git clone https://github.com/<your-username>/cc-plus.git
 
-# Copy agents to your Claude config
-cp cc-plus/agents/*.md ~/.claude/agents/
-
 # Copy commands
 cp cc-plus/commands/**/*.md ~/.claude/commands/
-
-# Copy contexts
-cp cc-plus/contexts/*.md ~/.claude/contexts/
-
-# Copy rules
-cp cc-plus/rules/*.md ~/.claude/rules/
 
 # Copy skills
 cp -r cc-plus/skills/* ~/.claude/skills/
@@ -92,7 +94,7 @@ cp -r cc-plus/skills/* ~/.claude/skills/
 
 #### Add Hooks
 
-Copy the hooks from `hooks/hooks.json` to your `~/.claude/settings.json`.
+Copy the `hooks` block from [`examples/settings.json`](./examples/settings.json) into your `~/.claude/settings.json`, and copy `hooks/scripts/` to `~/.claude/hooks/scripts/` (the example's commands point there).
 
 #### Configure MCPs
 
@@ -108,7 +110,7 @@ claude --plugin-dir "path/to/cc-plus"
 
 ### Run with Docker
 
-For containerized deployment, see [README.docker.md](./README.docker.md) for detailed instructions.
+For a containerized deployment (isolated Linux environment with Claude Code pre-installed), see [README.docker.md](./README.docker.md) for detailed instructions.
 
 ## Configuration
 
@@ -118,7 +120,7 @@ Copy `.env.example` to `.env` and configure your settings:
 cp .env.example .env
 ```
 
-Edit `settings.json` to customize plugin behavior.
+For manual installs, start from [`examples/settings.json`](./examples/settings.json) and adjust `enabledPlugins`/`hooks` to taste.
 
 ## Contributing
 
