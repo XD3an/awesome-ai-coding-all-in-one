@@ -23,6 +23,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 #### Tools
 
 - [ccusage](https://github.com/ryoppippi/ccusage)
+- [agenttrace](https://github.com/luoyuctl/agenttrace)
 - [ccundo](https://github.com/RonitSachdev/ccundo)
 - [opcode/Claudia](https://github.com/getAsterisk/opcode)
 - [slopus/happy](https://github.com/slopus/happy)
