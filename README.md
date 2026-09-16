@@ -88,6 +88,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [Superdesign.dev](https://www.superdesign.dev/)：Open Source Design Agent
 - [Kilocode](https://github.com/kilocode-ai/kilocode)：AI-powered code generation tool
 - [Cody](https://sourcegraph.com/cody)：AI coding assistant by Sourcegraph
+- [Sillage](https://github.com/MarlBurroW/sillage)：Self-hosted mobile-first web UI that drives the native Claude Code and Codex CLIs on your own machine (server-side sessions, full-text search, IDE panel, MCP board, installable PWA)
 
 ## Mobile Apps
 
