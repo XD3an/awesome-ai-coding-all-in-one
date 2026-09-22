@@ -61,6 +61,10 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [HeroUI Chat](https://heroui.chat/)：Generate beautiful apps regardless of your design experience
 - [Rocket.new](https://www.rocket.new/)：Build Web & Mobile Apps 10x Faster Without Code
 
+## Startup Idea & Product Validation
+
+- [IdeaHunter](https://ideahunter.today)：Find demand-backed app and micro-SaaS ideas using public signals, buyer pain, market evidence, MVP scope, and monetization paths
+
 ## Command Line Tools
 
 - [Claude Code](https://github.com/anthropics/claude-code)：Coding agent that understands your codebase via natural language
