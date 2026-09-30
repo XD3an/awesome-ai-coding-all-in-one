@@ -129,6 +129,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [agent-rules](https://github.com/steipete/agent-rules)
 - [/r/vibecoding](https://www.reddit.com/r/vibecoding/)：Vibe coding community on Reddit
 - [AGENTS.md](https://agents.md/)：Simple, open format for guiding coding agents
+- [NextReset](https://nextreset.ai/)：Independent source-linked Codex reset history, usage-limit guide, official AI incident feed, and browser-local reset timer
 
 ## AI Development Tools
 
