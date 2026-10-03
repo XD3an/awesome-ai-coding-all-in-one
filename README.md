@@ -132,6 +132,10 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 ## AI Development Tools
 
+### Testing & QA
+
+- [Agent QA](https://github.com/vostride/agent-qa): Source-available QA agent for natural-language web and mobile tests, with persistent test memory and CLI/MCP interfaces
+
 ### Spec-Driven Development (SDD): Toolkit to help you get started with Spec-Driven Development.
 
 - [spec-kit](https://github.com/github/spec-kit)
