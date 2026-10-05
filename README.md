@@ -140,6 +140,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 - [mcp-servers](https://github.com/modelcontextprotocol/servers)：Official MCP server implementations
 - [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)：Curated list of MCP servers
+- [Hyperconsciousness](https://github.com/louis030195/hyperconsciousness)：MIT-licensed developer-alpha encrypted knowledge store with scoped, expiring MCP access for agent memory
 
 ## Further Readings
 
