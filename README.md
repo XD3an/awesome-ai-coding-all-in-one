@@ -65,6 +65,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 - [Claude Code](https://github.com/anthropics/claude-code)：Coding agent that understands your codebase via natural language
 - [Aider](https://aider.chat/)：AI pair programming in your terminal
+- [codex-profiles](https://github.com/Ducksss/codex-profiles)：Codex CLI/Desktop profile switcher using isolated CODEX_HOME directories
 - [Codename Goose](https://block.github.io/goose/)：Local AI Agent with any LLM and MCP servers
 - [MyCoder.ai](https://github.com/drivecore/mycoder)：Open source AI coding assistant with Git and GitHub integration
 - [RA.Aid](https://github.com/ai-christianson/RA.Aid)：Standalone coding agent built on LangGraph
