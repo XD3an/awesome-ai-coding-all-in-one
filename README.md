@@ -75,6 +75,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 - [OpenCode](https://opencode.ai/)：AI coding agent built for the terminal
 - [Crush](https://github.com/charmbracelet/crush)：Glamorous AI coding agent for terminal
 - [GitHub Copilot CLI](https://cli.github.com/)：Terminal AI assistance
+- [Atomic Agent](https://github.com/AtomicBot-ai/atomic-agent)：Local-first CLI and TUI coding agent running open-weight models on your machine
 
 ## AI Coding Agents & Assistants
 
@@ -96,6 +97,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 ## Local AI Development Tools
 
 - [Dyad](https://www.dyad.sh/)：Free, local, open-source AI app builder
+- [Atomic Agent](https://atomicagent.io/)：Open-source coding agent running open-weight models locally, no API key required
 
 ## Task Management & Documentation for AI Coding
 
