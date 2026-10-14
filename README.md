@@ -140,6 +140,7 @@ A curated collection of AI-powered coding tools, configurations, and resources t
 
 - [mcp-servers](https://github.com/modelcontextprotocol/servers)：Official MCP server implementations
 - [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)：Curated list of MCP servers
+- [ContextStream](https://contextstream.io)：Shared project context for Cursor, Claude Code, Codex, Grok. MCP https://mcp.contextstream.io/mcp. OSS [contextstream/mcp-server](https://github.com/contextstream/mcp-server). Intelligence isn’t the bottleneck. Context is.
 
 ## Further Readings
 
