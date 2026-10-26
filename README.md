@@ -80,6 +80,7 @@ git clone --recurse-submodules https://github.com/XD3an/awesome-ai-coding-all-in
 - [Firebase Studio](https://studio.firebase.google.com/)：Google's agentic cloud development environment
 - [Rork](https://rork.app/)：Build mobile apps
 - [Dyad](https://www.dyad.sh/)：Free, local, open source app builder
+- [The Hive Code](https://thehivecode.ai/)：Free platform where people post and back software ideas and AI agents help build them, with a person approving every change
 
 ## Spec-Driven Development & Task Management
 
