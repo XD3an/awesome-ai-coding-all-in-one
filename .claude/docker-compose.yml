@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   claude-code:
     build:
@@ -13,10 +11,10 @@ services:
 
     # Mount local directories to container
     volumes:
-      # Persist Claude Code configuration
-      - claude-config:/home/claude/.config/claude
-      # Persist bash history
-      - claude-bash-history:/home/claude/.bash_history
+      # Persist Claude Code configuration and login (CLAUDE_CONFIG_DIR)
+      - claude-config:/home/claude/.claude
+      # Persist bash history (HISTFILE points into this directory)
+      - claude-bash-history:/home/claude/.history
 
     # Environment variables
     environment:

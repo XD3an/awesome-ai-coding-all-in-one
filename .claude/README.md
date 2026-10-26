@@ -10,6 +10,8 @@ A lean, curated set of custom skills, commands, hooks, and plugin config for Cla
 - [Claude Code Skills](https://github.com/anthropics/skills/tree/main/skills) - Official skills repository
 - [Claude Code Plugins](https://github.com/anthropics/claude-code/tree/main/plugins) - Official plugins
 
+> The document skills (`docx`, `pdf`, `pptx`, `xlsx`) are not redistributed here: they are under Anthropic's proprietary license. Get them from the official [anthropics/skills](https://github.com/anthropics/skills) repo or the `document-skills` plugin.
+
 ### Community Resources
 
 - [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) - Claude Code workflows, slash-commands, and templates
@@ -22,6 +24,7 @@ cc-plus doesn't vendor these, but declares them as [plugin dependencies](https:/
 
 - [humanizer](https://github.com/blader/humanizer) - removes AI-writing tells from text
 - [impeccable](https://github.com/pbakaus/impeccable) - frontend design fluency: `/impeccable polish`, `audit`, `critique`, ...
+- [notify](./mods/notify) - desktop notifications, from this marketplace
 
 Their marketplaces must already be known to your Claude Code installation, otherwise install reports a `dependency-unsatisfied` error naming the command to run first:
 
@@ -35,10 +38,9 @@ Their marketplaces must already be known to your Claude Code installation, other
 ```
 cc-plus/
 ├── .claude-plugin/             # Plugin metadata (plugin.json, marketplace.json)
-├── agents/                     # Subagents
 ├── commands/                   # Custom commands
 ├── examples/                   # Reference files (e.g. settings.json for manual installs)
-├── hooks/                      # Plugin hooks (hooks.json + scripts/notify.py)
+├── mods/                       # Function-hook mods, each its own plugin in the marketplace
 ├── resources/                  # Reference material: example CLAUDE.md files, slash-commands, workflow guides
 ├── scripts/                    # Standalone utility scripts (model switching, litellm proxy)
 ├── skills/                     # Custom skills
@@ -92,9 +94,9 @@ cp cc-plus/commands/**/*.md ~/.claude/commands/
 cp -r cc-plus/skills/* ~/.claude/skills/
 ```
 
-#### Add Hooks
+#### Add Notifications
 
-Copy the `hooks` block from [`examples/settings.json`](./examples/settings.json) into your `~/.claude/settings.json`, and copy `hooks/scripts/` to `~/.claude/hooks/scripts/` (the example's commands point there).
+Desktop notifications come from the [`notify`](./mods/notify) mod: install it with `/plugin install notify@cc-plus`, or load it with `claude --plugin-dir path/to/cc-plus/mods/notify`.
 
 #### Configure MCPs
 
@@ -111,6 +113,28 @@ claude --plugin-dir "path/to/cc-plus"
 ### Run with Docker
 
 For a containerized deployment (isolated Linux environment with Claude Code pre-installed), see [README.docker.md](./README.docker.md) for detailed instructions.
+
+## Mods
+
+`mods/` holds Claude Code mods: plugins written as TypeScript function hooks (`hooks/hooks.json` → `{ "modules": ["./register.ts"] }`). Each mod is a separate plugin in this marketplace, so you can install, disable, or break one without touching the others.
+
+| Mod | What it does |
+| --- | --- |
+| [`notify`](./mods/notify) | Notifications when a session starts, a long turn finishes, a tool fails, or Claude asks for permission. On Windows, an animated popup with a little Claude buddy (built-in WPF); on macOS `osascript`, on Linux `notify-send`. Nothing extra to install. |
+
+```bash
+/plugin install notify@cc-plus
+```
+
+While developing a mod, load it straight from disk so every save hot-reloads it:
+
+```bash
+claude --plugin-dir ./mods/notify
+claude plugin validate ./mods/notify
+claude plugin test ./mods/notify
+```
+
+> Mods are an early-access Claude Code surface and the API may change between releases.
 
 ## Configuration
 

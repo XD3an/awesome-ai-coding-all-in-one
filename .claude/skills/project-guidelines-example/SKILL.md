@@ -1,3 +1,9 @@
+---
+name: project-guidelines-example
+description: Example template of a project-specific skill (architecture, file structure, code patterns, testing rules) based on the Zenith app. Copy and adapt it for your own project; it does not apply to other codebases.
+disable-model-invocation: true
+---
+
 # Project Guidelines Skill (Example)
 
 This is an example of a project-specific skill. Use this as a template for your own projects.

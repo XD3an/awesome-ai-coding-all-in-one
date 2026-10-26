@@ -17,6 +17,17 @@
       },
       "homepage": "https://github.com/XD3an/cc-plus",
       "repository": "https://github.com/XD3an/cc-plus"
+    },
+    {
+      "name": "notify",
+      "source": "./mods/notify",
+      "description": "Native desktop notifications when a session starts, a turn finishes, a tool fails, or Claude needs your attention.",
+      "author": {
+        "name": "Dean",
+        "url": "https://github.com/XD3an"
+      },
+      "homepage": "https://github.com/XD3an/cc-plus/tree/main/mods/notify",
+      "repository": "https://github.com/XD3an/cc-plus"
     }
   ]
 }

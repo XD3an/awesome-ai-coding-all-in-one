@@ -1,6 +1,6 @@
 ---
 description: Create a new Claude Code custom command
-argument-hint: [command-name] [description]
+argument-hint: "[command-name] [description]"
 allowed-tools: Write, Read, LS, Bash(mkdir:*), Bash(ls:*), WebSearch(*)
 ---
 

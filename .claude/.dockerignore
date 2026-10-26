@@ -28,9 +28,9 @@ docker-compose.yml
 # ------------------------------------------------------------------------------
 # Documentation & README
 # ------------------------------------------------------------------------------
+# Only the repo docs: SKILL.md files and commands/*.md are the plugin itself
 README.md
 README.docker.md
-*.md
 docs/
 documentation/
 

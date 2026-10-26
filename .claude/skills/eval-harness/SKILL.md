@@ -1,3 +1,8 @@
+---
+name: eval-harness
+description: Eval-driven development for Claude Code work. Use when defining expected behavior before implementing a feature, writing capability or regression evals, measuring reliability with pass@k, or checking a change for regressions.
+---
+
 # Eval Harness Skill
 
 A formal evaluation framework for Claude Code sessions, implementing eval-driven development (EDD) principles.

@@ -1,6 +1,6 @@
 # Claude Code Docker Environment
-# Build stable Linux environment based on Ubuntu 22.04 LTS
-FROM ubuntu:22.04
+# Build stable Linux environment based on Ubuntu 24.04 LTS (Node 18 for the npx MCP servers)
+FROM ubuntu:24.04
 
 # Set environment variables to avoid interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -43,12 +43,19 @@ RUN curl -fsSL https://claude.ai/install.sh | bash
 # Ensure Claude Code is in PATH
 ENV PATH="/home/claude/.local/bin:${PATH}"
 
-# Copy plugin-template directory into container and rename to .claude
-COPY --chown=claude:claude ./ /home/claude/.claude
+# Keep all of Claude Code's state (including .claude.json) inside ~/.claude so
+# one volume persists login and settings
+ENV CLAUDE_CONFIG_DIR=/home/claude/.claude \
+    HISTFILE=/home/claude/.history/bash_history
+
+# The plugin lives apart from ~/.claude, so a rebuild always ships the current
+# copy instead of being shadowed by the persisted config volume
+COPY --chown=claude:claude ./ /home/claude/cc-plus
+RUN mkdir -p /home/claude/.claude /home/claude/.history
 
 # Set up bash aliases
-RUN echo 'alias cc="claude --plugin-dir /home/claude/.claude --dangerously-skip-permissions"' >> /home/claude/.bashrc && \
-    echo 'alias claude-plugin="claude --plugin-dir /home/claude/.claude"' >> /home/claude/.bashrc
+RUN echo 'alias cc="claude --plugin-dir /home/claude/cc-plus --dangerously-skip-permissions"' >> /home/claude/.bashrc && \
+    echo 'alias claude-plugin="claude --plugin-dir /home/claude/cc-plus"' >> /home/claude/.bashrc
 
 # Set working directory
 WORKDIR /home/claude

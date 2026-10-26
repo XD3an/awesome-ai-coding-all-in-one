@@ -92,11 +92,11 @@ Inside the container:
 # Basic usage
 claude
 
-# Use with plugin-template (shortcut alias)
+# Use with the cc-plus plugin (shortcut alias)
 cc
 
-# Use with plugin-template (full command)
-claude --plugin-dir /home/claude/.claude --dangerously-skip-permissions
+# Use with the cc-plus plugin (full command)
+claude --plugin-dir /home/claude/cc-plus --dangerously-skip-permissions
 
 # Alternative alias
 claude-plugin
@@ -110,9 +110,9 @@ claude --help
 
 ## Mounted Directories
 
-- `/home/claude/.claude` - Plugin directory (plugin-template copied here)
-- `claude-config` volume - Claude Code configuration (persistent)
-- `claude-bash-history` volume - Bash history (persistent)
+- `/home/claude/cc-plus` - Plugin directory (this repo, copied at build time)
+- `claude-config` volume - `/home/claude/.claude`: Claude Code configuration and login (persistent)
+- `claude-bash-history` volume - `/home/claude/.history`: Bash history (persistent)
 
 Available aliases: `cc` and `claude-plugin`
 
@@ -214,7 +214,7 @@ networks:
 
 The container comes with pre-configured aliases for convenience:
 
-- `cc` - Shortcut for `claude --plugin-dir /home/claude/.claude --dangerously-skip-permissions`
+- `cc` - Shortcut for `claude --plugin-dir /home/claude/cc-plus --dangerously-skip-permissions`
 - `claude-plugin` - Alternative alias for using Claude Code with plugin directory
 
 To add your own aliases, you can:

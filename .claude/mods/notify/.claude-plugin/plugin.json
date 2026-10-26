@@ -1,0 +1,43 @@
+{
+  "name": "notify",
+  "version": "0.2.1",
+  "description": "Animated desktop notifications when a session starts, a turn finishes, a tool fails, the context fills up, or Claude asks for permission. Nothing extra to install.",
+  "author": {
+    "name": "Dean",
+    "url": "https://github.com/XD3an"
+  },
+  "license": "MIT",
+  "keywords": [
+    "notifications",
+    "toast",
+    "mod",
+    "claude-code"
+  ],
+  "userConfig": {
+    "language": {
+      "type": "string",
+      "title": "Language",
+      "description": "Language of the notifications and /notify. auto follows your system language.",
+      "default": "en",
+      "options": [
+        "auto",
+        "en",
+        "zh-TW",
+        "zh-CN",
+        "ja"
+      ]
+    },
+    "contextWarning": {
+      "type": "number",
+      "title": "Context warning (%)",
+      "description": "Warn when the context window is this full (and again at 90%). 0 turns the warning off.",
+      "default": 80
+    },
+    "permissionButtons": {
+      "type": "boolean",
+      "title": "Allow / Deny on the popup",
+      "description": "On Windows, answer permission prompts from the popup's Allow and Deny buttons. Closing the popup leaves the question to the terminal.",
+      "default": true
+    }
+  }
+}
