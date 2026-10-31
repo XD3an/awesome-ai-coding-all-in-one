@@ -91,6 +91,7 @@ git clone --recurse-submodules https://github.com/XD3an/awesome-ai-coding-all-in
 - [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)：Reference MCP servers
 - [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)：Curated list of MCP servers
 - [container-use](https://github.com/dagger/container-use)：Containerized environments for coding agents
+- [agent-qa](https://vostride.com/docs/agent-qa/mcp)：MCP server for self-improving web and mobile tests, with persistent memidex memory and recorded evidence
 
 ## Agent Configuration Standards
 
