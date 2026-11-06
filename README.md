@@ -28,6 +28,7 @@ git clone --recurse-submodules https://github.com/XD3an/awesome-ai-coding-all-in
 - [cc-plus](https://github.com/XD3an/cc-plus)：My Claude Code plugin: skills, commands, mods, and themes
 - [ccusage](https://github.com/ryoppippi/ccusage)：Token usage and cost analysis
 - [happy](https://github.com/slopus/happy)：Mobile and web client for Claude Code and Codex
+- [Sillage](https://github.com/MarlBurroW/sillage)：Self-hosted, mobile-first web UI that drives the Claude Code and Codex CLIs on your own machine (server-side sessions, full-text search, IDE panel, MCP board, installable PWA)
 
 ## Codex
 
