@@ -91,7 +91,7 @@ git clone --recurse-submodules https://github.com/XD3an/awesome-ai-coding-all-in
 - [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)：Reference MCP servers
 - [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)：Curated list of MCP servers
 - [container-use](https://github.com/dagger/container-use)：Containerized environments for coding agents
-- [Sandscale](https://sandscale.dev/sandboxes/mcp)：Remote MCP server that gives coding agents a Firecracker microVM sandbox per task, with allow/ask/deny rules per tool and an audit log
+- [Sandscale](https://sandscale.dev/sandboxes/mcp)：Remote MCP server that gives coding agents a Firecracker microVM sandbox per task, with every call recorded in an audit log
 
 ## Agent Configuration Standards
 
